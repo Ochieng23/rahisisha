@@ -12,6 +12,7 @@
 
 :root {
   --color-white: #fff;
+  --color-white-light: #f3f3f3;
   --color-black: #0f0f0f;
   --color-black-light: rgba(54, 54, 54, 0.8);
   --color-blue: #062344;
