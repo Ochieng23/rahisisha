@@ -40,6 +40,7 @@ function Signup() {
       if (response.ok) {
         localStorage.setItem("jwt", data.jwt);
         setUser(data.user);
+        window.location.href = "/login"
       } else {
         setErrors(data.errors);
       }
