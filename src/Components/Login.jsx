@@ -19,7 +19,7 @@ function Login() {
       const decodedToken = JSON.parse(atob(accessToken.split(".")[1]));
       const userRole = decodedToken.role;
       localStorage.setItem("userRole", userRole);
-      if (userRole === "Seeker") {
+      if (userRole === "USER") {
         window.location.href = "/home";
       } else if (userRole === "Employer") {
         window.location.href = "/profile";
@@ -42,7 +42,9 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        const accessToken = data.token;
+        const accessToken = data.accessToken;
+
+        console.log(data)
         localStorage.setItem("accessToken", accessToken);
         setAccessToken(accessToken);
       } else {
