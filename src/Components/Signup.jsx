@@ -49,6 +49,10 @@ function Signup() {
     }
   };
 
+  const handleRedirect = () => {
+    window.location.href = "/login"
+  }
+
   return (
     <>
       <div className="signup-section">
@@ -110,7 +114,7 @@ function Signup() {
 
           <button type="submit">Sign up</button>
           <p style={{ color: "white" }}>
-            Already have an account? <a href="#">Log in</a>
+            Already have an account? <a onClick={handleRedirect}>Log in</a>
           </p>
           {/* Render errors below the form */}
 
