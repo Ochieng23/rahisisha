@@ -14,6 +14,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BiUser } from "react-icons/bi";
 import { BsTelephone } from "react-icons/bs";
 import Modal from "react-modal";
+import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 
@@ -195,21 +196,75 @@ function HomePage() {
                 <div className="create__post-types">
                   <div className="posts__icon-video">
                     <BsPlayCircle />
-                    <small>Video</small>
+                    <Popup trigger={<small>Videos</small>} position="center" className="my-popup">
+                      <div className="popup_body">
+                        <div className="popup_body-header">
+                          <h5>Video Posts</h5>
+                        </div>
+                        <div className="popup_form">
+                          <form action="" className="popup_form">
+                            <div className="popup_form-input">
+                              <input type="text" placeholder="Write a description"/>
+                              <input type="file" name="" id="" required/>
+                            </div>
+                            <div className="form__group-button">
+                              <button className="form__group-save">Save</button>
+                            </div>
+                          </form>
+                         
+                        </div>
+                      </div>
+                    </Popup>
                   </div>
                   <div className="posts__icon-photo">
                     <TbPhotoCheck />
-                    <small>Photos</small>
+                    <Popup trigger={<small>Photos</small>} position="center" className="my-popup">
+                      <div className="popup_body">
+                        <div className="popup_body-header">
+                          <h5>Photo Posts</h5>
+                        </div>
+                        <div className="popup_form">
+                          <form action="" className="popup_form">
+                            <div className="popup_form-input">
+                              <input type="text" placeholder="Write a description"/>
+                              <input type="file" name="" id="" required/>
+                            </div>
+                            <div className="form__group-button">
+                              <button className="form__group-save">Save</button>
+                            </div>
+                          </form>
+                         
+                        </div>
+                      </div>
+                    </Popup>
                   </div>
                   <div className="posts__icon-date">
                     <BiCalendar />
-                    <small>Events</small>
+                    <Popup trigger={<small>Events</small>} position="center" className="my-popup">
+                      <div className="popup_body">
+                        <div className="popup_body-header">
+                          <h5>Date Posts</h5>
+                        </div>
+                        <div className="popup_form">
+                          <form action="" className="popup_form">
+                            <div className="popup_form-input">
+                              <input type="text" placeholder="Write a description"/>
+                              <input type="date" name="" id="" required/>
+                            </div>
+                            <div className="form__group-button">
+                              <button className="form__group-save">Save</button>
+                            </div>
+                          </form>
+                         
+                        </div>
+                      </div>
+                    </Popup>
                   </div>
                 </div>
               </div>
             </div>
             <div className="posts__lists">
-              {posts &&
+              {Array.isArray(posts) &&
                 posts.map((post) => (
                   <article className="posts__lists-card" key={post.id}>
                     <div className="posts__card-profile">
