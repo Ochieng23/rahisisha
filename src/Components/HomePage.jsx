@@ -18,6 +18,7 @@ import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 
+
 const customStyles = {
   content: {
     top: "50%",

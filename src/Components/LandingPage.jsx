@@ -8,11 +8,14 @@ import connect4 from "../Assets/connect-4.png";
 import connect5 from "../Assets/connect-5.png";
 import connect6 from "../Assets/connect-6.png";
 import Footer from "./Footer";
-import { Ai } from "react-icons/ai";
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+  const navigate = useNavigate()
   return (
     <>
+      <Navbar/>
       <section className="landing__page">
       <div className="landing__page-circle" style={{ display: "flex" }}>
           {/* Thousands of verified jobs in a click */}
@@ -100,7 +103,7 @@ function LandingPage() {
               </div>
             </div>
             <div className="landing__page-button">
-              <button className="landing-btn ">Get Started</button>
+              <button onClick={()=> navigate('/signup')} className="landing-btn ">Get Started</button>
             </div>
           </div>
         </div>

@@ -276,6 +276,12 @@
    margin-top: 1rem;
 }
 
+@media screen and (max-width: 1500px) {
+   .home__profile-image {
+      margin-left: 4rem;
+   }
+}
+
 @media screen and (max-width: 1024px) {
    .home__page-container {
       display: grid;
