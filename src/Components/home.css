@@ -154,11 +154,20 @@
 .posts__icon-video svg {
    color: var(--color-red);
 }
+.posts__icon-video {
+   cursor: pointer;
+}
 .posts__icon-photo svg {
    color: var(--color-blue);
 }
+.posts__icon-photo {
+   cursor: pointer;
+}
 .posts__icon-date svg {
    color: var(--color-yellow);
+}
+.posts__icon-date {
+   cursor: pointer;
 }
 .posts__lists {
    border: 2px solid var(--color-black-light);
@@ -246,6 +255,31 @@
    font-weight: bold;
    padding-right: 1rem;
    cursor: pointer;
+}
+.my-popup-content {
+   margin: auto;
+   background: rgb(255, 255, 255);
+   width: 50%;
+   padding: 5px;
+ }
+ .my-popup-overlay {
+   background: rgba(0, 0, 0, 0.5);
+ }
+.popup_form {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+.popup_form-input input {
+   border: 4px solid var(--color-black);
+   border-radius: 0.5rem;
+   margin-top: 1rem;
+}
+
+@media screen and (max-width: 1500px) {
+   .home__profile-image {
+      margin-left: 4rem;
+   }
 }
 
 @media screen and (max-width: 1024px) {
