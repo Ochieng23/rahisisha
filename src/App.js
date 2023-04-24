@@ -11,6 +11,7 @@ import Notifications from "./Components/Notifications";
 import Admin from "./Components/Admin";
 import Post from "./Components/Post";
 import Community from "./Components/Community";
+import SeekersList from "./Components/SeekersList"
 
 function App() {
   // Function to check if there is an accessToken and Userrole in localStorage
@@ -78,6 +79,13 @@ function App() {
           path="/posts"
           element={
             isAuthenticated() ? <Post /> : <Navigate to="/posts" />
+          }
+        />
+
+<Route
+          path="/seekers"
+          element={
+            isAuthenticated() ? <SeekersList /> : <Navigate to="/seekers" />
           }
         />
       </Routes>

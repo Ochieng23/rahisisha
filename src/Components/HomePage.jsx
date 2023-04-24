@@ -155,7 +155,7 @@ function HomePage() {
                             Edit Your Profile
                           </strong>
                         </div>
-                        <div className="modal__body">
+                        <div className="modal__body"  style={{  overflowY: 'auto', textAlign:"center" }}>
                           <form action="" className="form__modal">
                             <div className="form__group">
                               <div className="form__group-header">
