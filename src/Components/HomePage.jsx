@@ -30,7 +30,8 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "50rem",
+    width: '40rem',
+    height: '40rem',
     border: "3px solid black",
   },
 };
