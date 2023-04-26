@@ -61,7 +61,7 @@ function App() {
             isAuthenticated() ? <Community /> : <Navigate to="/community" />
           }
         />
-        <Route
+        {/* <Route
           path="/notification"
           element={
             isAuthenticated() ? (
@@ -70,7 +70,7 @@ function App() {
               <Navigate to="/notification" />
             )
           }
-        />
+        /> */}
         <Route
           path="/manage/posts"
           element={
