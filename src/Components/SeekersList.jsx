@@ -1,4 +1,6 @@
 import { React, useEffect, useState } from "react";
+import './seekerslist.css'
+import Navigation from "./Navigation";
 
 
 const SeekersList = () => {
@@ -31,16 +33,17 @@ const SeekersList = () => {
 
   return (
     <>
+    <Navigation/>
       <section className="seekers__lists-page">
         <div className="seeker__lists-container">
-          {
+          { seeker &&
             seeker.map((seek)=> {
               <article className="community__card-list">
                 <div className="community__card-avatar">
                     <img src={seek.avatar} alt="" />
                 </div>
                 <div className="comunity__card-info">
-                    <h5>J{seek.full_name}</h5>
+                    <h5>{seek.full_name}</h5>
                     <strong>{seek.email}</strong>
                     <strong>{seek.phone_number}</strong>
                     <strong>{seek.location}</strong>
