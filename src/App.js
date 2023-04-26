@@ -14,6 +14,7 @@ import Community from "./Components/Community";
 import SeekersList from "./Components/SeekersList"
 import JobForm from "./Components/JobForm";
 import Employerprofile from './Components/Employerprofile'
+import Jobs from "./Components/Jobs";
 
 function App() {
   // Function to check if there is an accessToken and Userrole in localStorage
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/jobs" element={<Jobs />} />
         <Route path="/employer" element={<Employerprofile />} />
         <Route
           path="/profile"
@@ -61,16 +63,6 @@ function App() {
             isAuthenticated() ? <Community /> : <Navigate to="/community" />
           }
         />
-        {/* <Route
-          path="/notification"
-          element={
-            isAuthenticated() ? (
-              <Notifications />
-            ) : (
-              <Navigate to="/notification" />
-            )
-          }
-        /> */}
         <Route
           path="/manage/posts"
           element={
