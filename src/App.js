@@ -37,8 +37,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/employer" element={<Employerprofile />} />
+        {/* <Route path="/employer" element={<Employerprofile />} /> */}
         <Route
           path="/profile"
           element={isAuthenticated() ? <Profile /> : <Navigate to="/profile" />}
@@ -87,6 +86,12 @@ function App() {
           path="/seekers"
           element={
             isAuthenticated() ? <SeekersList /> : <Navigate to="/seekers" />
+          }
+        />
+          <Route
+          path="/employer"
+          element={
+            isAuthenticated() ? <Employerprofile /> : <Navigate to="/employer" />
           }
         />
       </Routes>
