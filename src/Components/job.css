@@ -1,0 +1,37 @@
+.jobs__lists-page {
+    display: grid;
+    place-items: center;
+}
+.job__lists-container {
+    width: var(--container-width-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    place-items: center;
+    padding: 2rem;
+}
+.job__card-list {
+    background: var(--color-black-light);
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 3px solid var(--color-black);
+    color: var(--color-white);
+    transition: var(--transition);
+    cursor: pointer;
+}
+.job__card-list:hover {
+    color: var(--color-black);
+    background: var(--color-white);
+    margin-top: -0.3rem;
+}
+.job__job-name {
+    display: flex;
+    text-align: center;
+}
+.job__job-description {
+    display: flex;
+    text-align: center;
+}
