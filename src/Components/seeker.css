@@ -1,0 +1,52 @@
+.seekers__lists-page {
+    display: grid;
+    place-items: center;
+ }
+ .seeker__lists-container {
+    width: var(--container-width-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    place-items: center;
+    padding: 2rem;
+ }
+ .community__card-list {
+    background: var(--color-black-light);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 3px solid var(--color-black);
+    color: var(--color-white);
+    transition: var(--transition);
+    cursor: pointer;
+ }
+ .community__card-list:hover {
+    color: var(--color-black);
+    background: var(--color-white);
+    margin-top: -0.3rem;
+ }
+ .community__card-avatar {
+    display: flex;
+ }
+ .community__card-avatar img {
+    width: 8rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+ }
+ .community__card-avatar img:hover {
+    border: 3px solid var(--color-black);
+ }
+ .comunity__card-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+ }
+ .community__card-button {
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+ }
+ 
