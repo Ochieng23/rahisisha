@@ -64,7 +64,7 @@ function Profile() {
       console.log("Upload successful:", response.data.secure_url);
       // You can access the uploaded image URL from response.data.url or response.data.secure_url
       // Update the media state with the secure URL of the uploaded image
-      setMedia(response.data);
+      setMedia(response.data.secure_url);
     } catch (error) {
       // Handle upload error
       console.error("Upload error:", error);

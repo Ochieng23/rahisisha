@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 
 function JobForm() {
   // set up state variables using useState hook
-  const [title, setTitle] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [location, setLocation] = useState("");
+  const [jobCode, setJobCode] = useState("");
+  const [jobName, setJobName] = useState("");
   const [description, setDescription] = useState("");
+  const [employerCode, setEmployerCode] = useState("");
+  const [jobTagCode, setJobTagCode] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [userId, setUserId] = useState("");
   const [posts, setPosts] = useState([]);
@@ -19,7 +18,7 @@ function JobForm() {
     console.log(accessToken);
     if (accessToken) {
       setAuthenticated(true);
-      fetch("http://127.0.0.1:3000/posts", {
+      fetch("http://127.0.0.1:3000/jobs", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -33,7 +32,7 @@ function JobForm() {
         })
         .then((data) => setPosts(data))
         .catch((error) => console.log(error));
-      
+
       const [, payloadBase64] = accessToken.split(".");
       const payload = JSON.parse(atob(payloadBase64));
       const userId = payload.user_ref; // extracting the user ID from the access token payload
@@ -70,66 +69,52 @@ function JobForm() {
         Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        title,
-        companyName,
-        email,
-        avatar,
-        location,
-        description,
+        job_code: jobCode,
+        job_name: jobName,
+        description: description,
+        employer_code: employerCode,
+        jobtag_code: jobTagCode,
       }),
     })
-    .then((response) => {
-      if (response.ok) {
-        alert("Job posted successfully!");
-        setTitle("");
-        setCompanyName("");
-        setEmail("");
-        setAvatar("");
-        setLocation("");
-        setDescription("");
-      } else {
-        alert("Failed to post job");
-      }
-    })
-    .catch((error) => {
-      alert("Error posting job: " + error);
-    });
+      .then((response) => {
+        if (response.ok) {
+          alert("Job posted successfully!");
+          setJobCode("");
+          setJobName("");
+          setDescription("");
+          setEmployerCode("");
+          setJobTagCode("");
+        } else {
+          alert("Failed to post job");
+        }
+      })
+      .catch((error) => {
+        alert("Error posting job: " + error);
+      });
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{width:"600px",border:"1px solid black"}}>
       <label>
-        Title:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Company Name:
-        <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Avatar:
-        <input type="text" value={avatar} onChange={(e) => setAvatar(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Location:
-        <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+        Job Name:
+        <input
+          type="text"
+          value={jobName}
+          onChange={(e) => setJobName(e.target.value)}
+        />
       </label>
       <br />
       <label>
         Description:
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </label>
       <br />
       <button type="submit">Submit</button>
-    </form>
+</form>
   );
 }
 
-export default JobForm
+export default JobForm;

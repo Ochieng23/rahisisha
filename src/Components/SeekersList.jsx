@@ -17,7 +17,7 @@ const SeekersList = () => {
     email: "",
     avatar: null,
     location: "",
-    date_of_birth:"",
+    date_of_birth: "",
     preferred_job: "",
     availability: "",
     minimum_salary: "",
@@ -115,164 +115,175 @@ const SeekersList = () => {
       action=""
       className="form__modal"
       style={{
-        maxWidth: "400px",
+        Width: "600px",
         margin: "0 auto",
-        border: "2px solid black",
+
         padding: "5px",
       }}
     >
-      <div className="form__group">
-        <div className="form__group-header">
-          <BiUser />
-          <label htmlFor="">Enter Full Name</label>
+      <div className="row">
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <BiUser />
+            <label htmlFor="">Enter Full Name</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              name="full_name"
+              value={formValues.full_name}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your full name"
-            name="full_name"
-            value={formValues.full_name}
-            onChange={handleChange}
-          />
+
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <BiUser />
+            <label htmlFor="">Gender</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="Enter your Gender"
+              name="gender"
+              value={formValues.gender}
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="form__group">
-        <div className="form__group-header">
-          <BiUser />
-          <label htmlFor="">Gender</label>
+      <div className="row">
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <MdOutlineMarkEmailUnread />
+            <label htmlFor="">D.O.B</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="date"
+              placeholder="Enter your current email"
+              name="date_of_birth"
+              value={formValues.date_of_birth}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your full name"
-            name="gender"
-            value={formValues.gender}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
 
-      <div className="form__group">
-        <div className="form__group-header">
-          <MdOutlineMarkEmailUnread />
-          <label htmlFor="">D.O.B</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="date"
-            placeholder="Enter your current email"
-            name="date_of_birth"
-            value={formValues.date_of_birth}
-            onChange={handleChange}
-          />
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <MdOutlineMarkEmailUnread />
+            <label htmlFor="">Email</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="Enter your current email"
+              name="email"
+              value={formValues.email}
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
+      <div className="row">
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <BiUserCircle />
+            <label htmlFor="">Avatar</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="file"
+              name="avatar"
+              value={formValues.avatar ? formValues.avatar.name : ""} // Set value to file name or empty string
+              onChange={(event) => uploadImage(event.target.files)}
+            />
+          </div>
+        </div>
 
-      <div className="form__group">
-        <div className="form__group-header">
-          <MdOutlineMarkEmailUnread />
-          <label htmlFor="">Email</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your current email"
-            name="email"
-            value={formValues.email}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form__group">
-        <div className="form__group-header">
-          <BiUserCircle />
-          <label htmlFor="">Avatar</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="file"
-            name="avatar"
-            value={formValues.avatar ? formValues.avatar.name : ""} // Set value to file name or empty string
-            onChange={(event) => uploadImage(event.target.files)}
-          />
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <HiOutlineLocationMarker />
+            <label htmlFor="">Location</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="Enter your current Location"
+              name="location"
+              value={formValues.location}
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
+      <div className="row">
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <GrUserWorker />
+            <label htmlFor="">Preferred Job</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="Enter your preferred job"
+              name="preferred_job"
+              value={formValues.preferred_job}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <AiOutlineFieldTime />
+            <label htmlFor="">Availability</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="How soon can you receive job opportunities"
+              name="availability"
+              value={formValues.availabilty}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <BsCashStack />
+            <label htmlFor="">Anticipated Salary</label>
+          </div>
 
-      <div className="form__group">
-        <div className="form__group-header">
-          <HiOutlineLocationMarker />
-          <label htmlFor="">Location</label>
+          <div className="form__group-input ">
+            <input
+              type="text"
+              placeholder="Enter your anticipated salary"
+              name="minimum_salary"
+              value={formValues.minimum_salary}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your current Location"
-            name="location"
-            value={formValues.location}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form__group">
-        <div className="form__group-header">
-          <GrUserWorker />
-          <label htmlFor="">Preferred Job</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your preferred job"
-            name="preferred_job"
-            value={formValues.preferred_job}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form__group">
-        <div className="form__group-header">
-          <AiOutlineFieldTime />
-          <label htmlFor="">Availability</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="How soon can you receive job opportunities"
-            name="availability"
-            value={formValues.availabilty}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form__group">
-        <div className="form__group-header">
-          <BsCashStack />
-          <label htmlFor="">Anticipated Salary</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your anticipated salary"
-            name="minimum_salary"
-            value={formValues.minimum_salary}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
 
-      <div className="form__group">
-        <div className="form__group-header">
-          <BsTelephone />
-          <label htmlFor="">Phone Number</label>
-        </div>
-        <div className="form__group-input">
-          <input
-            type="text"
-            placeholder="Enter your phone number"
-            name="phoneNumber"
-            value={formValues.phoneNumber}
-            onChange={handleChange}
-          />
+        <div className="form__group col-md-6">
+          <div className="form__group-header">
+            <BsTelephone />
+            <label htmlFor="">Phone Number</label>
+          </div>
+          <div className="form__group-input">
+            <input
+              type="text"
+              placeholder="Enter your phone number"
+              name="phoneNumber"
+              value={formValues.phoneNumber}
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
 

@@ -82,12 +82,12 @@ function App() {
             isAuthenticated() ? <Post /> : <Navigate to="/posts" />
           }
         />
-        {/* <Route
-          path="/posts"
+        <Route
+          path="/jobform"
           element={
-            isAuthenticated() ? <JobForm /> : <Navigate to="/s" />
+            isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />
           }
-        /> */}
+        />
 
         <Route
           path="/seekers"
