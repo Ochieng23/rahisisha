@@ -86,10 +86,6 @@ function HomePage() {
     getPosts();
   }, []);
 
-  
-
-  
-
   const openModal = () => {
     setIsOpen(true);
   };
@@ -102,7 +98,7 @@ function HomePage() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userRole");
     window.location.href = "/login";
-    setUser(null)
+    setUser(null);
   };
 
   // Like function
@@ -132,7 +128,7 @@ function HomePage() {
       });
   };
 
-  console.log(posts)
+  console.log(posts);
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -141,7 +137,6 @@ function HomePage() {
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
-
 
   // posting a post
   const handlePost = async () => {
@@ -170,7 +165,6 @@ function HomePage() {
     console.log(user);
   };
 
-
   //fetching user details
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -178,10 +172,9 @@ function HomePage() {
     if (accessToken) {
       try {
         const decodedToken = JSON.parse(atob(accessToken.split(".")[1])); //use jwt
-        const user_code = decodedToken.user_ref
-        
-      console.log(user_code)
-        
+        const user_code = decodedToken.user_ref;
+
+        console.log(user_code);
 
         fetch(`http://127.0.0.1:3000/users/${user_code}`, {
           method: "GET",
@@ -196,8 +189,6 @@ function HomePage() {
             return response.json();
           })
           .then((response) => {
-
-            
             console.log(response);
 
             setUser(response);
@@ -213,9 +204,8 @@ function HomePage() {
     }
   }, []);
 
-console.log(user)
+  console.log(user);
 
-  
   return (
     <>
       <Navigation />
@@ -227,27 +217,24 @@ console.log(user)
                 <div className="home__profile-bg"></div>
                 <div className="home__profile-image">
                   <Link to="/profile">
-                  {user && user.seeker && user.seeker.avatar && (
-                    <img
-                      src={user.seeker.avatar}
-                      alt=""
-                    />
-                  )}
+                    {user && user.seeker && user.seeker.avatar && (
+                      <img src={user.seeker.avatar} alt="" />
+                    )}
                   </Link>
                 </div>
               </div>
               <div className="home__profile-content">
                 <div className="home__profile-title">
-                {user?.seeker?.full_name ? (
-                  <>
-                    <h4>{user.seeker.full_name} </h4>
-                    <span>{user.seeker.email} </span>
-                  </>
-                ) : (
-                  <>
-                    <h4>Loading...</h4>
-                  </>
-                )}
+                  {user?.seeker?.full_name ? (
+                    <>
+                      <h4>{user.seeker.full_name} </h4>
+                      <span>{user.seeker.email} </span>
+                    </>
+                  ) : (
+                    <>
+                      <h4>Loading...</h4>
+                    </>
+                  )}
                 </div>
 
                 <div className="home__profile-body">
@@ -375,10 +362,15 @@ console.log(user)
                       style={{ padding: "2px", height: "auto" }}
                     >
                       <div className="card__profile-avatar">
-                        <img
-                          src="https://images.pexels.com/photos/14041401/pexels-photo-14041401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          alt=""
-                        />
+                        {post.seeker && post.seeker.avatar ? (
+                          <img src={post.seeker.avatar} alt="" />
+                        ) : (
+                          <img
+                            src="default-avatar.jpg" // or a default avatar image URL
+                            alt=""
+                          />
+                        )}
+
                         <Post />
                       </div>
                       <div className="card__profile-about">

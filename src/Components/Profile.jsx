@@ -44,10 +44,7 @@ function Profile() {
       setDescription(value);
     }
   }
-
   const uploadImage = async (files) => {
-
-
     const cloudinaryUploadPreset = "hcdgzzgi";
     const cloudinaryCloudName = "dhz4c0oae";
   
@@ -61,10 +58,10 @@ function Profile() {
         formData
       );
       // Handle successful upload
-      console.log("Upload successful:", response.data.secure_url);
+      console.log("Upload successful:", response);
       // You can access the uploaded image URL from response.data.url or response.data.secure_url
       // Update the media state with the secure URL of the uploaded image
-      setMedia(response.data.secure_url);
+      setMedia(response.data.secure_url); // Update this line to access the secure_url property from the response data
     } catch (error) {
       // Handle upload error
       console.error("Upload error:", error);
@@ -72,8 +69,9 @@ function Profile() {
     }
   };
   
+  console.log(media); // Note that this will log the media state, but it may not reflect the updated value immediately after uploading the image, as it is an asynchronous operation.
+  
 
-  console.log(media)
   function handleSaveClick() {
     try {
       // Get the accessToken from local storage

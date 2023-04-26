@@ -286,15 +286,20 @@ const SeekersList = () => {
           </div>
         </div>
       </div>
-
-      <div className="form__group-button">
+       <div className="row">
+      <div className="form__group-button col-md-4">
         <button
           type="submit"
           className="form__group-save"
+          
           onClick={handleUpdate}
         >
           Save
         </button>
+      </div>
+      <div className="form__group-button col-md-6">
+      
+      </div>
       </div>
     </form>
   );
