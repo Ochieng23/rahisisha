@@ -18,9 +18,9 @@ function Navigation() {
             <li className="nav-item">
               <Link className="nav-link" to="/profile" style={{color: 'white', fontSize: '1.0rem'}}>Profile</Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" to="/notification" style={{color: 'white', fontSize: '1.0rem'}}>Notifications</Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link className="nav-link" to="/community" style={{color: 'white', fontSize: '1.0rem'}}>Community</Link>
             </li>
