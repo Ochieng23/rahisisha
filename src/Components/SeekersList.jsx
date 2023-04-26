@@ -10,7 +10,11 @@ const SeekersList = () => {
   useEffect(()=> {
     const accessToken = localStorage.getItem("accessToken");
     console.log(accessToken);
-    if (accessToken) {
+    const [, payloadBase64] = accessToken.split(".");
+    const payload = JSON.parse(atob(payloadBase64));
+    const userRole = payload.role; 
+    
+    if (accessToken && userRole === 'EMPLOYER') {
       setAuthenticated(true);
       fetch("http://127.0.0.1:3000/seekers", {
         headers: {
