@@ -1,130 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 function JobForm() {
-  // set up state variables using useState hook
-  const [title, setTitle] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
-  const [userId, setUserId] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState("");
+  const [jobTitle, setJobTitle] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [email, setEmail] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
 
-  // use useEffect hook to fetch user and post data on component mount
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
-    if (accessToken) {
-      setAuthenticated(true);
-      fetch("http://127.0.0.1:3000/posts", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw new Error("Network response was not ok");
-          }
-        })
-        .then((data) => setPosts(data))
-        .catch((error) => console.log(error));
-      
-      const [, payloadBase64] = accessToken.split(".");
-      const payload = JSON.parse(atob(payloadBase64));
-      const userId = payload.user_ref; // extracting the user ID from the access token payload
-
-      fetch(`http://127.0.0.1:3000/users/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw new Error("Network response was not ok");
-          }
-        })
-        .then((data) => setUser(data.username))
-        .catch((error) => console.log(error));
-    } else {
-      setAuthenticated(false);
-    }
-  }, []);
-
-  // handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const accessToken = localStorage.getItem("accessToken");
-
-    // make POST request to API with form data
-    fetch("http://127.0.0.1:3000/jobs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify({
-        title,
-        companyName,
-        email,
-        avatar,
-        location,
-        description,
-      }),
-    })
-    .then((response) => {
-      if (response.ok) {
-        alert("Job posted successfully!");
-        setTitle("");
-        setCompanyName("");
-        setEmail("");
-        setAvatar("");
-        setLocation("");
-        setDescription("");
-      } else {
-        alert("Failed to post job");
-      }
-    })
-    .catch((error) => {
-      alert("Error posting job: " + error);
+    const formData = new FormData();
+    formData.append('job_title', jobTitle);
+    formData.append('company_name', companyName);
+    formData.append('email', email);
+    formData.append('avatar', avatar);
+    formData.append('location', location);
+    formData.append('description', description);
+    const response = await fetch('/api/jobs', {
+      method: 'POST',
+      body: formData,
     });
+    if (response.ok) {
+      setJobTitle('');
+      setCompanyName('');
+      setEmail('');
+      setAvatar('');
+      setLocation('');
+      setDescription('');
+      alert('Job posted successfully!');
+    } else {
+      alert('Failed to post job.');
+    }
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Title:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        Job Title:
+        <input type="text" value={jobTitle} onChange={(event) => setJobTitle(event.target.value)} />
       </label>
       <br />
       <label>
         Company Name:
-        <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+        <input type="text" value={companyName} onChange={(event) => setCompanyName(event.target.value)} />
       </label>
       <br />
       <label>
         Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
       </label>
       <br />
       <label>
         Avatar:
-        <input type="text" value={avatar} onChange={(e) => setAvatar(e.target.value)} />
+        <input type="file" onChange={(event) => setAvatar(event.target.files[0])} />
       </label>
       <br />
       <label>
         Location:
-        <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+        <input type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
       </label>
       <br />
       <label>
         Description:
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea value={description} onChange={(event) => setDescription(event.target.value)} />
       </label>
       <br />
       <button type="submit">Submit</button>
