@@ -24,8 +24,8 @@ function Login() {
       if (userRole === "seeker") {
         window.location.href = "/home";
       } else if (userRole === "employer") {
-        window.location.href = "/home";
-      } else if (userRole === "ADMIN") {
+        window.location.href = "/employer";
+      } else if (userRole === "admin") {
         window.location.href = "/admin"
       }
     } catch (error) {

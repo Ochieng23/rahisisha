@@ -11,10 +11,12 @@ import Notifications from "./Components/Notifications";
 import Admin from "./Components/Admin";
 import Post from "./Components/Post";
 import Community from "./Components/Community";
-import SeekersList from "./Components/SeekersList"
+import SeekersList from "./Components/SeekersList";
 import JobForm from "./Components/JobForm";
-import Employerprofile from './Components/Employerprofile'
+import Employerprofile from "./Components/Employerprofile";
 import Jobs from "./Components/Jobs";
+import Employerform from "./Components/Employerform";
+import Seeker from "./Components/Seeker";
 
 function App() {
   // Function to check if there is an accessToken and Userrole in localStorage
@@ -37,8 +39,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/employer" element={<Employerprofile />} />
+        {/* <Route path="/employer" element={<Employerprofile />} /> */}
         <Route
           path="/profile"
           element={isAuthenticated() ? <Profile /> : <Navigate to="/profile" />}
@@ -72,15 +73,11 @@ function App() {
 
         <Route
           path="/posts"
-          element={
-            isAuthenticated() ? <Post /> : <Navigate to="/posts" />
-          }
+          element={isAuthenticated() ? <Post /> : <Navigate to="/posts" />}
         />
         <Route
           path="/jobform"
-          element={
-            isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />
-          }
+          element={isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />}
         />
 
         <Route
@@ -88,6 +85,41 @@ function App() {
           element={
             isAuthenticated() ? <SeekersList /> : <Navigate to="/seekers" />
           }
+        />
+        <Route
+          path="/employer"
+          element={
+            isAuthenticated() ? (
+              <Employerprofile />
+            ) : (
+              <Navigate to="/employer" />
+            )
+          }
+        />
+
+        <Route
+          path="/employerform"
+          element={
+            isAuthenticated() ? (
+              <Employerform />
+            ) : (
+              <Navigate to="/employerform" />
+            )
+          }
+        />
+        <Route
+          path="/jobform"
+          element={isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />}
+        />
+
+        <Route
+          path="/jobs"
+          element={isAuthenticated() ? <Jobs /> : <Navigate to="/jobs" />}
+        />
+
+        <Route
+          path="/seekerlist"
+          element={isAuthenticated() ? <Seeker /> : <Navigate to="/seekerlist" />}
         />
       </Routes>
     </div>

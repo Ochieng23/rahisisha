@@ -1,10 +1,10 @@
 import React from "react";
 import "./profile.css";
 import { TbEdit } from "react-icons/tb";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import Navigation from "./Navigation";
-import axios  from "axios";
+import axios from "axios";
 
 const customStyles = {
   content: {
@@ -25,7 +25,51 @@ function Profile() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState(null);
+  const [user, setUser] = useState(null);
+  const [role, setRole] = useState(null);
 
+  //fetch user details based on role
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    if (accessToken) {
+      try {
+        const decodedToken = JSON.parse(atob(accessToken.split(".")[1])); //use jwt
+        const user_code = decodedToken.user_ref;
+
+        console.log(user_code);
+
+        fetch(`http://127.0.0.1:3000/users/${user_code}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Set the access token as a Bearer token
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Failed to fetch user details");
+            }
+            return response.json();
+          })
+          .then((response) => {
+            console.log(response);
+
+            setUser(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.error("Failed to decode access token", error);
+      }
+    } else {
+      console.error("Access token not found in localStorage");
+    }
+  }, []);
+
+
+
+console.log(user)
   function openModal() {
     setIsOpen(true);
   }
@@ -47,11 +91,11 @@ function Profile() {
   const uploadImage = async (files) => {
     const cloudinaryUploadPreset = "hcdgzzgi";
     const cloudinaryCloudName = "dhz4c0oae";
-  
+
     const formData = new FormData();
     formData.append("file", files[0]);
     formData.append("upload_preset", cloudinaryUploadPreset);
-  
+
     try {
       const response = await axios.post(
         `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`,
@@ -59,49 +103,36 @@ function Profile() {
       );
       // Handle successful upload
       console.log("Upload successful:", response);
-      // You can access the uploaded image URL from response.data.url or response.data.secure_url
-      // Update the media state with the secure URL of the uploaded image
+
       setMedia(response.data.secure_url); // Update this line to access the secure_url property from the response data
     } catch (error) {
       // Handle upload error
       console.error("Upload error:", error);
-      // Handle any error messages or perform any other error handling tasks
     }
   };
-  
+
   console.log(media); // Note that this will log the media state, but it may not reflect the updated value immediately after uploading the image, as it is an asynchronous operation.
-  
 
   function handleSaveClick() {
     try {
-      // Get the accessToken from local storage
       const accessToken = localStorage.getItem("accessToken");
-  
+
       if (!accessToken) {
         console.error("Access token not found in local storage.");
         return;
       }
-  
-      // Decode the accessToken to obtain user_code
+
       const decodedToken = JSON.parse(atob(accessToken.split(".")[1]));
       const userCode = decodedToken.user_ref;
-  
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
       formData.append("media", media);
-      formData.append(
-        "post_code",
-        "<%= SecureRandom.hex(10) %>"
-      ); // Replace with your own implementation to generate post code
+      formData.append("post_code", "<%= SecureRandom.hex(10) %>"); // Replace with your own implementation to generate post code
       formData.append("likes", 0);
       formData.append("user_code", userCode); // Extract user_code from decoded payload
-      formData.append(
-        "authenticity_token",
-        ""
-      ); // Replace with your own implementation to get form authenticity token
-  
-      // Send the request to '/posts' with the bearer token and form data
+      formData.append("authenticity_token", "");
       axios
         .post("http://127.0.0.1:3000/posts", formData, {
           headers: {
@@ -112,42 +143,84 @@ function Profile() {
         .then((response) => {
           // Handle successful response
           console.log("Post created:", response.data);
-          // Perform any other tasks after successful post creation
         })
         .catch((error) => {
-          // Handle post creation error
           console.error("Post creation error:", error);
-          // Handle any error messages or perform any other error handling tasks
         });
     } catch (error) {
-      // Handle unexpected error
       console.error("Unexpected error:", error);
-      // Handle any error messages or perform any other error handling tasks
     }
   }
-  
-  
+
   return (
     <>
       <Navigation />
       <section className="profile__page">
         <div className="profile__page-container">
-          <article className="profile__page-content">
-            <div className="profile__page-profile">
+          <article
+            className="profile__page-content"
+            style={{ border: "2px solid red" }}
+          >
+            <div
+              className="profile__page-profile"
+              style={{ border: "2px solid yellow" }}
+            >
               <div className="profile__page-background"></div>
-              <div className="profile__page-avatar">
-                <img
-                  src="https://images.pexels.com/photos/5386149/pexels-photo-5386149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt=""
-                />
+              <div
+                className="profile__page-avatar"
+                style={{ border: "2px solid green" }}
+              >
+                {user ? (
+                  <>
+                    {role === "seeker" && user.seeker ? (
+                      <img src={user.seeker.avatar} alt="Seeker avatar" />
+                    ) : role === "employer" && user.employer ? (
+                      <img src={user.employer.avatar} alt="Employer avatar" />
+                    ) : (
+                      <p>User profile is incomplete.</p>
+                    )}
+                  </>
+                ) : (
+                  <p>Loading...</p>
+                )}
               </div>
             </div>
             <div className="profile__card-body">
               <div className="profile__card-about">
-                <h4>John Doe</h4>
+                {user ? (
+                  <>
+                    {role === "seeker" ? (
+                      <p>{user.username}</p>
+                    ) : (
+                      <p>{user.username}</p>
+                    )}
+                  </>
+                ) : (
+                  <p>Loading...</p>
+                )}
                 <span>Software Engineer</span>
                 <div className="profile__about">
-                  <span>Nairobi, Kenya</span>
+                  <span>
+                    {" "}
+                    {user ? (
+                      <>
+                        {role === "seeker" && user.seeker ? (
+                          <p>
+                            {user.seeker.location || "Location not available"}
+                          </p>
+                        ) : role === "employer" && user.employer ? (
+                          <p>
+                            {user.employer.company_name ||
+                              "Company name not available"}
+                          </p>
+                        ) : (
+                          <p>User profile is incomplete.</p>
+                        )}
+                      </>
+                    ) : (
+                      <p>Loading...</p>
+                    )}
+                  </span>
                   <h5 onClick={openModal}>Create a post</h5>
                   <Modal
                     isOpen={modalIsOpen}
@@ -204,7 +277,9 @@ function Profile() {
                             <input
                               type="file"
                               name="media"
-                              onChange={(event) => uploadImage(event.target.files)} // Replace with your own function to handle media input change
+                              onChange={(event) =>
+                                uploadImage(event.target.files)
+                              } // Replace with your own function to handle media input change
                             />
                           </div>
                         </div>
