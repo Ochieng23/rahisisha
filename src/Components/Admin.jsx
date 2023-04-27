@@ -2,7 +2,7 @@ import React from 'react';
 import './admin.css'
 import { useState } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
-import { useNavigate, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import { HiOutlineUsers } from 'react-icons/hi'
 import { MdOutlineMarkEmailUnread } from 'react-icons/md'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
@@ -35,13 +35,12 @@ function Admin() {
   const [showManageEmployers, setShowManageEmployers] = useState(false);
 
   function openModal() {
-      setIsOpen(true);
+    setIsOpen(true);
   }
 
   function closeModal() {
-      setIsOpen(false);
+    setIsOpen(false);
   }
-
 
   function handleManagePostsClick() {
     setShowManagePosts(true);
@@ -63,8 +62,8 @@ function Admin() {
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
-  localStorage.removeItem('userRole');
-  window.location.href= '/login'
+    localStorage.removeItem('userRole');
+    window.location.href= '/login';
   }
     return (
       <>

@@ -295,10 +295,9 @@ function HomePage() {
               <div className="home__create-post">
                 <div className="create__posts">
                   <div className="create__posts-avatar">
-                    <img
-                      src="https://images.pexels.com/photos/16161517/pexels-photo-16161517.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
-                      alt=""
-                    />
+                  {user && user.seeker && user.seeker.avatar && (
+                      <img src={user.seeker.avatar} alt="" />
+                    )}
                   </div>
                   <div className="create__posts-input">
                     <form action="" className="form">

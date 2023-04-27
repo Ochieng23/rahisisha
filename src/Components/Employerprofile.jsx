@@ -23,6 +23,8 @@ import Navigation from "./Navigation";
 import Post from "./Post";
 import axios from "axios";
 import SeekersList from "./SeekersList";
+import Comments from "./Comments"
+import Employerform from "./Employerform";
 
 const customStyles = {
   content: {
@@ -103,32 +105,33 @@ function HomePage() {
 
   // Like function
 
-  const handleLike = (posts) => {
-    const accessToken = localStorage.getItem("accessToken");
+  // const handleLike = (posts, incrementLikesBy = 1) => {
+  //   const accessToken = localStorage.getItem("accessToken");
+  
+  //   const postCode = posts.post_code;
+  //   console.log(postCode);
+  //   axios
+  //     .patch(
+  //       `http://127.0.0.1:3000/posts/${postCode}`,
+  //       {
+  //         likes: posts.likes + incrementLikesBy,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log("Post liked successfully:", response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Failed to like post:", error);
+  //     });
+  // };       
+  
 
-    const postCode = posts.post_code;
-
-    axios
-      .patch(
-        `http://127.0.0.1:3000/posts/${postCode}`,
-        {
-          likes: 1, // Increment likes by 1
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
-      .then((response) => {
-        console.log("Post liked successfully:", response.data);
-      })
-      .catch((error) => {
-        console.error("Failed to like post:", error);
-      });
-  };
-
-  console.log(posts);
+  
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -227,12 +230,12 @@ function HomePage() {
                 <div className="home__profile-title">
                   {user?.seeker?.full_name ? (
                     <>
-                      <h4>{user.seeker.full_name} </h4>
-                      <span>{user.seeker.email} </span>
+                      <h4>{user.employer.full_name} </h4>
+                      <span>{user.employer.email} </span>
                     </>
                   ) : (
                     <>
-                      <h4>Loading...</h4>
+                      <h4>Complete Profile...</h4>
                     </>
                   )}
                 </div>
@@ -258,7 +261,7 @@ function HomePage() {
                           className="modal__body"
                           style={{ overflowY: "auto", textAlign: "center" }}
                         >
-                          <SeekersList />
+                          <Employerform/>
                         </div>
                       </Modal>
                     </div>
@@ -293,10 +296,9 @@ function HomePage() {
               <div className="home__create-post">
                 <div className="create__posts">
                   <div className="create__posts-avatar">
-                    <img
-                      src="https://images.pexels.com/photos/16161517/pexels-photo-16161517.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
-                      alt=""
-                    />
+                  {user && user.employer && user.employer.avatar && (
+                      <img src={user.employer.avatar} alt="" />
+                    )}
                   </div>
                   <div className="create__posts-input">
                     <form action="" className="form">
@@ -362,8 +364,8 @@ function HomePage() {
                       style={{ padding: "2px", height: "auto" }}
                     >
                       <div className="card__profile-avatar">
-                        {post.seeker && post.seeker.avatar ? (
-                          <img src={post.seeker.avatar} alt="" />
+                        {post.employer && post.employer.avatar ? (
+                          <img src={post.employer.avatar} alt="" />
                         ) : (
                           <img
                             src="default-avatar.jpg" // or a default avatar image URL
@@ -401,16 +403,19 @@ function HomePage() {
 
                       <div className="posts__card-buttons">
                         <div className="buttons__like-card">
-                          <button onClick={handleLike} className="like">
-                            <SlLike />
+                        <button style={{color:"black"}}  className="like">
+                            comments  
+                            {/* iterate through comments here */}
                           </button>
-                          <h5>{post.likes}</h5>
+                          
                         </div>
                         <div className="buttons__comment-card">
                           <button className="comment">
                             <FaRegCommentAlt />
                           </button>
-                          <h5>Comment</h5>
+                          <div>
+                            <Comments postCode={post.post_code}/>
+                          </div>
                         </div>
                       </div>
                     </div>

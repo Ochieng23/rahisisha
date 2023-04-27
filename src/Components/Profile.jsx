@@ -132,10 +132,10 @@ function Profile() {
       <Navigation />
       <section className="profile__page">
         <div className="profile__page-container">
-          <article className="profile__page-content">
-            <div className="profile__page-profile">
+          <article className="profile__page-content"  style={{border:"2px solid red"}}>
+            <div className="profile__page-profile"  style={{border:"2px solid yellow"}}>
               <div className="profile__page-background"></div>
-              <div className="profile__page-avatar">
+              <div className="profile__page-avatar" style={{border:"2px solid green"}}>
                 <img
                   src="https://images.pexels.com/photos/5386149/pexels-photo-5386149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   alt=""

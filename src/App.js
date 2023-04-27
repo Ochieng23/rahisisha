@@ -11,10 +11,11 @@ import Notifications from "./Components/Notifications";
 import Admin from "./Components/Admin";
 import Post from "./Components/Post";
 import Community from "./Components/Community";
-import SeekersList from "./Components/SeekersList"
+import SeekersList from "./Components/SeekersList";
 import JobForm from "./Components/JobForm";
-import Employerprofile from './Components/Employerprofile'
+import Employerprofile from "./Components/Employerprofile";
 import Jobs from "./Components/Jobs";
+import Employerform from "./Components/Employerform";
 
 function App() {
   // Function to check if there is an accessToken and Userrole in localStorage
@@ -71,15 +72,11 @@ function App() {
 
         <Route
           path="/posts"
-          element={
-            isAuthenticated() ? <Post /> : <Navigate to="/posts" />
-          }
+          element={isAuthenticated() ? <Post /> : <Navigate to="/posts" />}
         />
         <Route
           path="/jobform"
-          element={
-            isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />
-          }
+          element={isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />}
         />
 
         <Route
@@ -88,13 +85,34 @@ function App() {
             isAuthenticated() ? <SeekersList /> : <Navigate to="/seekers" />
           }
         />
-          <Route
+        <Route
           path="/employer"
           element={
-            isAuthenticated() ? <Employerprofile /> : <Navigate to="/employer" />
+            isAuthenticated() ? (
+              <Employerprofile />
+            ) : (
+              <Navigate to="/employer" />
+            )
           }
         />
+
+        <Route
+          path="/employerform"
+          element={
+            isAuthenticated() ? (
+              <Employerform />
+            ) : (
+              <Navigate to="/employerform" />
+            )
+          }
+        />
+         <Route
+        path="/jobform"
+        element={isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />}
+      />
       </Routes>
+
+     
     </div>
   );
 }
