@@ -106,13 +106,16 @@ function App() {
             )
           }
         />
-         <Route
-        path="/jobform"
-        element={isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />}
-      />
-      </Routes>
+        <Route
+          path="/jobform"
+          element={isAuthenticated() ? <JobForm /> : <Navigate to="/jobform" />}
+        />
 
-     
+        <Route
+          path="/jobs"
+          element={isAuthenticated() ? <Jobs /> : <Navigate to="/jobs" />}
+        />
+      </Routes>
     </div>
   );
 }
