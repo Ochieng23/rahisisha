@@ -39,7 +39,7 @@ const customStyles = {
   },
 };
 
-function HomePage() {
+function EmployerProfile() {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [posts, setPost] = useState([]);
@@ -429,7 +429,7 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default EmployerProfile;
 
 // const [isExpired, setIsExpired] = useState(false)
 

@@ -16,6 +16,7 @@ import JobForm from "./Components/JobForm";
 import Employerprofile from "./Components/Employerprofile";
 import Jobs from "./Components/Jobs";
 import Employerform from "./Components/Employerform";
+import Seeker from "./Components/Seeker";
 
 function App() {
   // Function to check if there is an accessToken and Userrole in localStorage
@@ -114,6 +115,11 @@ function App() {
         <Route
           path="/jobs"
           element={isAuthenticated() ? <Jobs /> : <Navigate to="/jobs" />}
+        />
+
+        <Route
+          path="/seekerlist"
+          element={isAuthenticated() ? <Seeker /> : <Navigate to="/seekerlist" />}
         />
       </Routes>
     </div>
