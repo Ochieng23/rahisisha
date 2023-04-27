@@ -41,6 +41,7 @@ const customStyles = {
 function HomePage() {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen2, setIsOpen2] = useState(false);
   const [posts, setPost] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
   const [description, setDescription] = useState("");
@@ -93,6 +94,14 @@ function HomePage() {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const openModal2 = () => {
+    setIsOpen2(true);
+  };
+
+  const closeModal2 = () => {
+    setIsOpen2(false);
   };
 
   const handleLogout = () => {
@@ -410,7 +419,30 @@ function HomePage() {
                         </div>
                         <div className="buttons__comment-card">
                           <button className="comment">
-                            <FaRegCommentAlt />
+                          <FaRegCommentAlt onClick={openModal2}/>
+                            <Modal
+                                  isOpen={modalIsOpen2}
+                                  onRequestClose={closeModal2}
+                                  style={customStyles}
+                                >
+                                  <div className="modal__header">
+                                    <strong ref={(_subtitle) => (subtitle = _subtitle)}>Comments</strong>
+                                  </div>
+                                  <div
+                                    className="modal__body"
+                                    style={{ overflow: "scroll", textAlign: "center" }}
+                                  >
+                                    {Array.isArray(posts) &&
+                                      posts.map((post) => (
+                                        <article className="modal2__card">
+                                          {post.comments &&
+                                            post.comments.map((comment) => (
+                                              <p key={comment.id}>{comment.content}</p>
+                                            ))}
+                                        </article>
+                                      ))}
+                                  </div>
+                                </Modal>
                           </button>
                           <div>
                             <Comments postCode={post.post_code}/>
