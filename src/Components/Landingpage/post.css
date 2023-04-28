@@ -1,0 +1,71 @@
+.Post{
+
+    padding-left: 60px;
+    background-color: rgb(237,231,223);
+    width: 100%;
+    max-width: 100%;
+}
+
+.Post-wrapper{
+    display: flex;
+    padding: 60px;
+    align-items: center;
+
+}
+
+.Post-wrapper > h2 {
+    font-size: 45px;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    flex-wrap: break-word;
+    margin-right: 30px;
+    width: 45%;
+    color: rgb(123,69,57);
+}
+
+.Post-wrapper > button {
+ background-color: rgb(237,231,223);
+ border-radius: 30px;
+ font-size: 20px;
+ padding: 14px;
+ border: 1px solid #116ad7;
+ color: #0769e1;
+ cursor: pointer;
+
+}
+
+.Post-wrapper > button:hover {
+ background-color: #cde3ff;
+}
+
+@media only screen and (max-width: 414px) {
+    .Post{
+        padding-left: 2px;
+    }
+
+    .Post-wrapper{
+        padding: 30px;
+        display: block;
+
+    }
+
+    .Post-wrapper > h2 {
+        font-size: 38px;
+        font-weight: 400;
+        width   : 100%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .Post-wrapper > h2 {
+        font-size: 30px;
+        width: 100%;
+        color: rgb(123,69,57);
+    }
+
+    .Post-wrapper > button {
+        border-radius: 30px;
+        font-size: 15px;
+        padding: 12px;
+       }
+}

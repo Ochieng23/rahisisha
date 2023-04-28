@@ -1,0 +1,75 @@
+import React from "react";
+import "./navbar.css";
+import HomeIcon from "@mui/icons-material/Home";
+import GroupIcon from "@mui/icons-material/Group";
+import WorkIcon from "@mui/icons-material/Work";
+import TextsmsIcon from "@mui/icons-material/Textsms";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
+import AppsIcon from "@mui/icons-material/Apps";
+
+function Navbar({ showUp, setshowUp }) {
+  // show messages
+  const showMessages = () => {
+    setshowUp(true);
+  };
+
+  return (
+    <div className="Navbar fixed top-0 left-0 right-0 z-30 h-[60px]">
+      <div className="logo_section">
+        <img
+          className="cursor-pointer"
+          src="https://www.seekpng.com/png/full/8-84419_linkedin-logo-png-icon-linkedin-logo-png.png"
+          alt="logo"
+        />
+
+        {/* <SearchIcon className = 'spair_search'/> */}
+        <div className="search_bar">
+          <SearchIcon className="search_icon" />
+          <input placeholder="search"></input>
+        </div>
+      </div>
+      <div className="nav_section">
+        <ul>
+          <li className="active">
+            <HomeIcon />
+            <span className="nav_text">Home</span>{" "}
+          </li>
+          <li>
+            <GroupIcon />
+            <span className="nav_text">My Network</span>
+          </li>
+          <li>
+            <WorkIcon />
+            <span className="nav_text">Jobs</span>
+          </li>
+          <li onClick={() => showMessages()}>
+            <TextsmsIcon />
+            <span className="notification bg-red-500 text-white pl-1 pr-1 rounded-full -mt-[20px] ml-[16px]">
+              4
+            </span>
+            <span className="nav_text">Messaging</span>
+          </li>
+          <li>
+            <NotificationsIcon />
+            <span className="nav_text">Notification</span>
+          </li>
+          <li>
+            {" "}
+            <img
+              src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
+              alt="profile"
+            />
+            <span className="nav_text"> Me</span>
+          </li>
+          <li className="line"></li>
+          <li className="work">
+            <AppsIcon /> Work
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
