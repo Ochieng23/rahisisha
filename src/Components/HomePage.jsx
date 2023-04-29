@@ -102,6 +102,14 @@ function HomePage() {
     setIsOpen2(false);
   };
 
+  const openModal2 = () => {
+    setIsOpen2(true);
+  };
+
+  const closeModal2 = () => {
+    setIsOpen2(false);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userRole");
@@ -416,9 +424,11 @@ function HomePage() {
                         </div>
                         <div className="buttons__comment-card">
                           <button className="comment">
+
                             
           
-                            <FaRegCommentAlt onClick={openModal2}/>
+
+                          <FaRegCommentAlt onClick={openModal2}/>
                             <Modal
                                   isOpen={modalIsOpen2}
                                   onRequestClose={closeModal2}
