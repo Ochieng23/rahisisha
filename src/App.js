@@ -39,6 +39,18 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <NavPanel />
+      <Welcome />
+      <Topics />
+      <Jobs />
+      <Post />
+      <Testimonals />
+      <Connect /> 
+      <Join />
+       <Footer />
+      <Footersection />
+      <Maincontent />
+      <Login />
         {/* <Route path="/employer" element={<Employerprofile />} /> */}
         <Route
           path="/profile"
