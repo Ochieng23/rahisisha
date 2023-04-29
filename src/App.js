@@ -18,6 +18,11 @@ import Jobs from "./Components/Jobs";
 import Employerform from "./Components/Employerform";
 import Seeker from "./Components/Seeker";
 
+// new UI
+import Landing from "./Components/Main Page/Landing";
+import Login from './Components/LoginPage/Login'
+import Maincontent from './Components/Main Page/Maincontent'
+
 function App() {
   // Function to check if there is an accessToken and Userrole in localStorage
   const isAuthenticated = () => {
@@ -38,19 +43,13 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
+
+        {/* New UI */}
         <Route path="/login" element={<Login />} />
-        <NavPanel />
-      <Welcome />
-      <Topics />
-      <Jobs />
-      <Post />
-      <Testimonals />
-      <Connect /> 
-      <Join />
-       <Footer />
-      <Footersection />
-      <Maincontent />
-      <Login />
+        <Route path="/main" element={<Maincontent />} />
+        <Route path="/landing" element={<Landing />} />
+        {/* New UI */}
+
         {/* <Route path="/employer" element={<Employerprofile />} /> */}
         <Route
           path="/profile"
