@@ -1,0 +1,243 @@
+.Footer{   
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.Footer-container{
+    background-color: rgb(240,239,236);
+    display: flex;
+    justify-content: space-around;
+    padding-left: 60px;
+    padding-top: 30px;
+    padding-right: 80px;
+    padding-bottom: 40px;
+
+}
+
+.linkedln_logo > img {
+  width: 150px;
+  margin-top: -24px;
+}
+
+.general > ul  {
+  list-style-type: none;
+}
+.general > ul >li>a  {
+  text-decoration: none;
+  color: rgb(71, 71, 71);
+}
+
+.general>ul>.main>p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+
+}
+.general > ul > li {
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+    margin-bottom: 6px;
+
+}
+
+.general > ul > li :hover{
+    color: rgb(17, 79, 171);
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+
+
+.Browsed_linkedln > ul  {
+  list-style-type: none;
+}
+
+.Browsed_linkedln>ul>.main>p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+
+}
+.Browsed_linkedln > ul > li {
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+    margin-bottom: 6px;
+
+}
+
+.Browsed_linkedln > ul >li>a  {
+    text-decoration: none;
+    color: rgb(71, 71, 71);
+  }
+
+.Browsed_linkedln > ul > li :hover{
+    color: #0754b2;
+    font-weight: 400;
+    text-decoration: underline;
+}
+.Browsed_linkedln > ul  {
+  list-style-type: none;
+}
+
+.Browsed_linkedln>ul>.main>p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+
+}
+.Browsed_linkedln > ul > li {
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+    margin-bottom: 6px;
+
+}
+
+.Browsed_linkedln > ul >li>a  {
+    text-decoration: none;
+    color: rgb(71, 71, 71);
+  }
+
+.Browsed_linkedln > ul > li :hover{
+    color: #0754b2;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+
+
+
+.Business_solutions > ul  {
+  list-style-type: none;
+}
+
+.Business_solutions>ul>.main>p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+
+}
+.Business_solutions > ul > li {
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+    margin-bottom: 6px;
+
+}
+
+.Business_solutions > ul >li>a  {
+    text-decoration: none;
+    color: rgb(71, 71, 71);
+  }
+
+.Business_solutions > ul > li :hover{
+    color: #0754b2;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+
+
+
+.Directories > ul  {
+  list-style-type: none;
+}
+
+.Directories>ul>.main>p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+
+}
+.Directories > ul > li {
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+    margin-bottom: 6px;
+
+}
+
+.Directories > ul >li>a  {
+    text-decoration: none;
+    color: rgb(71, 71, 71);
+  }
+
+.Directories > ul > li :hover{
+    color: #0754b2;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 414px) { 
+    .Footer-container{
+        
+        display: block !important;
+        padding-left: 30px;
+        padding-top: 20px;
+        padding-right: 30px;
+        padding-bottom: 30px;
+    
+    }
+    .linkedln_logo > img {
+        width: 130px;
+        margin-left: -20px;
+        margin-bottom: -50px;
+      }
+
+      .general>ul>.main>p{
+        font-weight: 500;
+        font-size: 18px;
+        margin-bottom: 6px;
+    
+    }
+
+    .Browsed_linkedln>ul>.main>p{
+        font-weight: 500;
+        font-size: 18px;    
+    }
+
+    .Business_solutions>ul>.main>p{
+        font-weight: 500;
+        font-size: 18px;   
+    
+    }
+    .Directories>ul>.main>p{
+        font-weight: 500;
+        font-size: 18px;   
+    
+    }
+}
+
+
+@media only screen and (max-width: 820px) {
+    .Footer-container{
+        display: flex;
+        padding-left: 20px;
+        padding-right: 20px;
+    
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .linkedln_logo > img {
+        width: 120px;
+      }
+      .general>ul>.main>p{
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 6px;
+    
+    }
+
+    .Browsed_linkedln>ul>.main>p{
+        font-weight: 500;
+        font-size: 14px;    
+    }
+
+    .Business_solutions>ul>.main>p{
+        font-weight: 500;
+        font-size: 14px;   
+    
+    }
+    .Directories>ul>.main>p{
+        font-weight: 500;
+        font-size: 14px;   
+    
+    }
+}

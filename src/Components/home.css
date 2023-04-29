@@ -276,6 +276,11 @@
    border-radius: 0.5rem;
    margin-top: 1rem;
  }
+ .modal2__card {
+  border: 2px solid var(--color-black);
+  border-radius: 1rem;
+  padding: 1rem;
+ }
  
 @media screen and (max-width: 1500px) {
   .home__profile-image {

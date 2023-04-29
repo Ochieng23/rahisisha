@@ -1,0 +1,202 @@
+.Navbar{
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    margin: 0;
+    padding-left: 120px;
+    padding-right: 120px;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    /* z-index: 1; */
+    transition-timing-function: ease-in;
+    /* position: -webkit-sticky; */
+    /* position: sticky; */
+    /* top: 0; */
+    
+
+
+}
+
+.logo_section{
+    display: flex;
+    align-items: center;
+}
+
+.logo_section>.spair_search{
+    display:none;
+}
+
+
+
+.nav_section>ul{
+    display: flex;
+}
+
+
+.nav_section>ul>li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(83,83,83);
+  cursor: pointer;
+
+}
+
+.nav_section>ul>li:hover{
+    color:black;
+}
+
+.logo_section >img{
+    width:50px;
+    height : 40px;
+    padding-right:10px;
+}
+
+.search_bar{
+    align-items: center;
+    background-color: rgb(234,240,247);
+    color:rgb(77,78,81);
+    height: 38px;
+    border-radius: 6px;
+    width: 300px;
+    padding: 5px;
+}
+.search_bar .MuiSvgIcon-root{
+    font-size: 22px;
+}
+
+
+.nav_section >ul>li>img{
+    width:25px;
+    border-radius: 50%;
+
+}
+
+.search_bar >input{
+    width:250px;
+    height: 30px;
+    border: none;
+    background-color: rgb(234,240,247);
+    color:#000;
+    outline: none;
+    font-size:15px;
+    margin-left: 5px;
+}
+
+.line{
+    border-left: 1px solid rgb(230,230,230);
+  height:50px;
+}
+
+.nav_section>ul>.free{
+    color: rgb(129,88,33);
+    width:150px;
+    text-align: center;
+    text-decoration:underline;
+}
+
+
+
+/* .nav_section >ul>li>.notification{
+    padding: 2px;
+    background-color: red;
+    color:#fff;
+    font-weight: 400;
+    border-radius: 50%;
+    margin-top:-25px;
+    margin-right:-25px;
+    margin-bottom: 5px;
+} */
+
+@media only screen and (max-width: 1064px) {
+    .Navbar{
+        display: flex;
+        background-color: #fff;
+        padding-left: 2px;
+        padding-right:2px;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .nav_section>ul>li{
+        padding: 4px !important;
+        font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+      }
+
+      .search_bar{
+        background-color: rgb(255, 255, 255);
+        border-radius: 6px;
+        width: 70px;
+        padding: 1px;
+        /* border: 2px solid red; */
+    }
+
+    .search_bar >input{
+        width:30px;
+        background-color: rgb(255, 255, 255);
+        margin-left: 2px;
+
+    }
+    .search_bar:focus-within {
+        width: 320px;
+        border: 1px solid rgb(0, 61, 105);
+        background-color: rgb(234,240,247);
+     
+            
+    }
+    .search_bar>input:focus-within {
+        width: 280px;  
+        background-color: rgb(234,240,247);
+        height: 25px;
+        /* border: 2px solid red; */
+    }
+
+    .logo_section>.spair_search{
+        display:block;
+    }
+
+.nav_section>ul>.line{
+    display: none;
+}
+
+.nav_section>ul>.free{
+   display :none
+}
+
+.nav_section>ul>.active{
+   border-bottom:none;
+}
+
+.nav_section>ul>.work{
+    display:none;
+}
+
+.nav_section>ul>li>.nav_text{
+  display: none;
+}
+
+.nav_section>ul>li .MuiSvgIcon-root{
+    font-size: 35px;
+}
+
+.nav_section >ul>li>img{
+    width:35px;
+    border-radius: 50%;
+}
+
+.logo_section > .spair_search{
+  cursor: pointer; 
+}
+
+.search_bar> .MuiSvgIcon-root{
+    color: #000;
+    padding-top: 7px;
+
+}
+
+}

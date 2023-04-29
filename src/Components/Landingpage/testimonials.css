@@ -1,0 +1,273 @@
+.Testimonials{
+    padding: 30px;
+    background-color: rgba(240,239,236)
+}
+
+
+.buttons > button{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.topics_container{
+  margin-left: 65px;
+  margin-top: 70px;
+  margin-bottom: 120px;
+
+}
+
+
+.testimoial_det{
+    width: 90%;
+    margin-left: 40px;
+}
+
+.det_t{
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: #3c3c3c;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    cursor: pointer;
+}
+
+.det_t>p>.left{
+    color: #9d9d9d;
+
+}
+
+.det_t>p .MuiSvgIcon-root{
+ align-items: center;
+}
+
+
+.test_data{
+    display: flex;
+    max-width: 100%;
+    border-radius: 8px;
+    align-items: center;
+    background-color: rgba(240,239,236)
+}
+
+.test_image >img{
+    width: 450px;
+    object-fit: contain;
+    border-radius: 50%;  
+
+}
+
+.test_det{
+    padding-left: 20px;
+    width: 50em;
+    margin: 30px;
+
+}
+
+.test_det >h2{
+    font-size: 50px;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    color: rgb(123,69,57);
+}
+
+.test_det >p{
+    font-size: 38px;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-weight: 230;
+}
+.testimonial_cards{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll !important;
+    
+
+}
+.testimonial_cards::-webkit-scrollbar{
+    display: none;
+}
+
+
+@media only screen and (max-width: 414px) {
+
+
+        .Testimonials{
+            /* border: 2px solid blue; */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+       }
+   
+       .topics_container{
+           margin-left: 20px;
+           margin-bottom: 120px;
+   
+         }
+   
+         .testimoial_det{
+           width: 90%;
+           margin-left: 2px;
+   
+   
+       }
+   
+       .test_image >img{
+           width: 300px;
+       }
+   
+       .test_det{
+           /* border: 2px solid rgb(0, 255, 76); */
+       }
+   
+       .test_det >h2{
+           font-size: 30px;
+       }
+   
+       .test_det >p{
+           font-size: 24px;
+       }
+   
+       .test_data{
+           display: flex;
+           flex-direction: column-reverse;
+           /* border: 2px solid red; */
+           margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+            margin-right:100px ;
+           }
+    
+           .testimonial_cards{
+               display: flex;
+           }
+}
+
+@media only screen and (max-width: 1060px) {
+    .Testimonials{
+        padding: 20px;
+
+    }
+
+    .topics_container{
+        margin-left: 25px;
+        margin-bottom: 120px;
+      }
+
+      .testimoial_det{
+        width: 100%;
+        margin-left: 2px;
+
+    }
+
+    .test_image >img{
+        width: 300px;
+    }
+
+    .test_det{
+        width: 100%;
+        padding: 5em;
+        width: 60em;
+        margin: 38px;
+
+    }
+
+    .test_det >h2{
+        font-size: 30px;
+    }
+
+    .test_det >p{
+        font-size: 24px;
+    }
+
+    .test_data{
+        display: flex;
+        flex-direction: column-reverse;
+        padding-left: 60px;
+
+
+        }
+ 
+        .testimonial_cards{
+            display: flex;
+        }
+}
+
+@media only screen and (max-width: 768px) {
+    .Testimonials{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+    }
+
+    .topics_container{
+        margin-left: 20px;
+        margin-bottom: 120px;
+
+      }
+
+      .testimoial_det{
+        width: 90%;
+        margin-left: 2px;
+
+    }
+
+    .test_image >img{
+        width: 330px;
+        margin-left: 30px;
+    }
+
+    .test_det{
+       width: 30em !important;
+    }
+
+    .test_det >h2{
+        font-size: 30px;
+    }
+
+    .test_det >p{
+        font-size: 24px;
+    }
+
+    .test_data{
+        display: flex;
+        flex-direction: column-reverse;
+        /* border: 2px solid red; */
+        margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         margin-right:100px ;
+        }
+ 
+        .testimonial_cards{
+            display: flex;
+        }
+
+}
+
+@media only screen and (max-width: 320px) {
+.testimoial_det{
+    width: 90%;
+    margin-left: 20px;
+}
+.test_image >img{
+    width: 290px;
+    object-fit: contain;
+    border-radius: 50%;  
+}
+
+.test_det{
+    padding-left: 20px;
+    width: 50em;
+    margin: 30px;
+}
+.test_det >h2{
+    font-size: 30px;
+    padding-left: 98px;
+    width: 90%;
+
+}
+.test_det >p{
+    font-size: 20px;
+    padding-left: 93px;
+    width: 90%;
+}
+}

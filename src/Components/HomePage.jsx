@@ -23,7 +23,6 @@ import Navigation from "./Navigation";
 import Post from "./Post";
 import axios from "axios";
 import SeekersList from "./SeekersList";
-import Comments from "./Comments"
 
 const customStyles = {
   content: {
@@ -95,6 +94,13 @@ function HomePage() {
   const closeModal = () => {
     setIsOpen(false);
   };
+  const openModal2 = () => {
+    setIsOpen2(true);
+  };
+
+  const closeModal2 = () => {
+    setIsOpen2(false);
+  };
 
   const openModal2 = () => {
     setIsOpen2(true);
@@ -113,33 +119,32 @@ function HomePage() {
 
   // Like function
 
-  // const handleLike = (posts, incrementLikesBy = 1) => {
-  //   const accessToken = localStorage.getItem("accessToken");
-  
-  //   const postCode = posts.post_code;
-  //   console.log(postCode);
-  //   axios
-  //     .patch(
-  //       `http://127.0.0.1:3000/posts/${postCode}`,
-  //       {
-  //         likes: posts.likes + incrementLikesBy,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       console.log("Post liked successfully:", response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Failed to like post:", error);
-  //     });
-  // };       
-  
+  const handleLike = (posts) => {
+    const accessToken = localStorage.getItem("accessToken");
 
-  
+    const postCode = posts.post_code;
+
+    axios
+      .patch(
+        `http://127.0.0.1:3000/posts/${postCode}`,
+        {
+          likes: 1, // Increment likes by 1
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log("Post liked successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Failed to like post:", error);
+      });
+  };
+
+  console.log(posts);
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -304,9 +309,10 @@ function HomePage() {
               <div className="home__create-post">
                 <div className="create__posts">
                   <div className="create__posts-avatar">
-                  {user && user.seeker && user.seeker.avatar && (
-                      <img src={user.seeker.avatar} alt="" />
-                    )}
+                    <img
+                      src="https://images.pexels.com/photos/16161517/pexels-photo-16161517.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+                      alt=""
+                    />
                   </div>
                   <div className="create__posts-input">
                     <form action="" className="form">
@@ -411,14 +417,17 @@ function HomePage() {
 
                       <div className="posts__card-buttons">
                         <div className="buttons__like-card">
-                        <button style={{color:"black"}}  className="like">
-                            comments  
-                            {/* iterate through comments here */}
+                          <button onClick={handleLike} className="like">
+                            <SlLike />
                           </button>
-                          
+                          <h5>{post.likes}</h5>
                         </div>
                         <div className="buttons__comment-card">
                           <button className="comment">
+
+                            
+          
+
                           <FaRegCommentAlt onClick={openModal2}/>
                             <Modal
                                   isOpen={modalIsOpen2}
@@ -444,9 +453,7 @@ function HomePage() {
                                   </div>
                                 </Modal>
                           </button>
-                          <div>
-                            <Comments postCode={post.post_code}/>
-                          </div>
+                          <h5>Comment</h5>
                         </div>
                       </div>
                     </div>
