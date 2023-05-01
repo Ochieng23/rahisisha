@@ -23,9 +23,10 @@ import Navigation from "./Navigation";
 import Post from "./Post";
 import axios from "axios";
 import SeekersList from "./SeekersList";
-import CreatePost from "./Main Page/CreatePost";
+import CreatePost from "../Components/Main Page/CreatePost";
 import Navbar from "../Components/Main Page/Navbar";
 import Comments from "./Comments";
+import PostForm from "./PostForm";
 
 const customStyles = {
   content: {
@@ -52,7 +53,8 @@ function HomePage() {
   const [user, setUser] = useState([]);
   const [formx, setForm] = useState(false);
   const [liked, setLiked] = useState(false);
-  const [likecount, setLikesCount] = useState(false);
+
+  // post form section
 
   // fetching posts
   useEffect(() => {
@@ -114,42 +116,6 @@ function HomePage() {
     localStorage.removeItem("userRole");
     window.location.href = "/login";
     setUser(null);
-  };
-
-  // Like function
-
-  const handleLike = (posts) => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    const postCode = posts.post_code;
-
-    if (liked) {
-      // Remove the like from the post
-      axios
-        .patch(`http://127.0.0.1:3000/posts/${postCode}`, {
-          headers: { Authorization: `Bearer ${accessToken}` },
-        })
-        .then((response) => {
-          setLiked(false);
-          setLikesCount((prevCount) => prevCount - 1);
-        })
-        .catch((error) => console.log(error));
-    } else {
-      // Add a like to the post
-      axios
-        .post(
-          `http://127.0.0.1:3000/posts/${postCode}`,
-          {},
-          {
-            headers: { Authorization: `Bearer ${accessToken}` },
-          }
-        )
-        .then((response) => {
-          setLiked(true);
-          setLikesCount((prevCount) => prevCount + 1);
-        })
-        .catch((error) => console.log(error));
-    }
   };
 
   console.log(posts);
@@ -307,14 +273,6 @@ function HomePage() {
                       <Link to="/community">Community</Link>
                     </div>
                   </div>
-                  <div className="profile__body-icon">
-                    <div className="icon__profile">
-                      <HiOutlineUsers />
-                    </div>
-                    <div className="content__profile">
-                      <Link to="/notification">Notifications</Link>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div className="profile__log-out">
@@ -324,70 +282,15 @@ function HomePage() {
               </div>
             </article>
           </aside>
-          <div className="homepage__posts ">
+          {/* post form */}
+          <div className=" ">
             <div
-              className="home__page-posts"
-              style={{ border: "2px solid red" }}
+              className=""
+              style={{ border: "1px solid black", borderRadius: "10px" }}
             >
               <div className="">
-                <div className="create__posts" style={{ display: "none" }}>
-                  <div className="flex flex-col space-y-4 rounded-lg shadow-lg bg-white p-4">
-                    <div className="flex space-x-4">
-                      <img
-                        className="w-12 h-12 rounded-full object-cover"
-                        src="https://source.unsplash.com/random"
-                        alt="Profile"
-                      />
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg">John Doe</h3>
-                        <p className="text-gray-500 text-sm">
-                          Software Engineer at Example Company
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                      <label htmlFor="post-title" className="font-bold text-lg">
-                        Title
-                      </label>
-                      <input
-                        id="post-title"
-                        className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        type="text"
-                        placeholder="Enter your title"
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                      <label htmlFor="post-body" className="font-bold text-lg">
-                        Body
-                      </label>
-                      <textarea
-                        id="post-body"
-                        className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Write your post"
-                      ></textarea>
-                    </div>
-                    <div className="flex space-x-4">
-                      <div className="flex-1">
-                        <label
-                          htmlFor="post-image"
-                          className="font-bold text-lg"
-                        >
-                          Image
-                        </label>
-                        <input
-                          id="post-image"
-                          className="w-full py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          type="file"
-                        />
-                      </div>
-                      <button
-                        className="flex-none px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        type="button"
-                      >
-                        Post
-                      </button>
-                    </div>
-                  </div>
+                <div className="create__posts" style={{ display: "" }}>
+                <PostForm />
 
                   {/* <div className="create__posts-avatar">
                     {user && (
@@ -464,7 +367,7 @@ function HomePage() {
                           className="buttons__like-card"
                           style={{ marginBottom: "5px" }}
                         >
-                          <Comments postCode={post.post_code}/>
+                          <Comments postCode={post.post_code} />
                         </div>
                         <div className="buttons__comment-card">
                           <button
@@ -494,19 +397,19 @@ function HomePage() {
                                   textAlign: "center",
                                 }}
                               >
-                                
-                                  
-                                    <article className="modal2__card">
-                                    {post.comments.map((comment) => (
-  <div key={comment.comment_code}>
-    <p>{comment.content}</p>
-    {/* check if the user object exists before accessing its 'username' property */}
-    {comment.user && <p>Comment by: {comment.user.username}</p>}
-  </div>
-))}
-
-                                    </article>
-                                  
+                                <article className="modal2__card">
+                                  {post.comments.map((comment) => (
+                                    <div key={comment.comment_code}>
+                                      <p>{comment.content}</p>
+                                      {/* check if the user object exists before accessing its 'username' property */}
+                                      {comment.user && (
+                                        <p>
+                                          Comment by: {comment.user.username}
+                                        </p>
+                                      )}
+                                    </div>
+                                  ))}
+                                </article>
                               </div>
                             </Modal>
                           </button>
