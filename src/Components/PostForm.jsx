@@ -114,7 +114,7 @@ function PostForm() {
     }
   }
   return (
-    <div style={{display:"block"}}>
+    <div className="postform-holder" style={{display:"block", width: 'maxContent'}}>
       <form
   action="/posts"
   method="post"

@@ -43,3 +43,14 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: var(--color-black);
 }
+.postform-holder {
+  width: 41rem;
+}
+.postform-holder form{
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  
+}

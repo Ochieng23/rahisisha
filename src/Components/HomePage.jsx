@@ -286,25 +286,12 @@ function HomePage() {
           <div className=" ">
             <div
               className=""
-              style={{ border: "1px solid black", borderRadius: "10px" }}
+              style={{width:'100%' }}
             >
               <div className="">
-                <div className="create__posts" style={{ display: "" }}>
-                <PostForm />
-
-                  {/* <div className="create__posts-avatar">
-                    {user && (
-                      <img
-                        src={
-                          role === "seeker"
-                            ? user?.seeker?.avatar
-                            : user?.employer?.avatar
-                        }
-                        alt=""
-                      />
-                    )}
-                  </div> */}
-                </div>
+              
+                    <PostForm/>
+              
                 <div className="create__post-types"></div>
               </div>
             </div>
