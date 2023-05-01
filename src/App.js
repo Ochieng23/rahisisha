@@ -47,11 +47,11 @@ function App() {
         {/* New UI */}
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Maincontent />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/landing" element={<Landing />} />
         {/* New UI */}
 
         {/* <Route path="/employer" element={<Employerprofile />} /> */}
-        {/* <Route
+        <Route
           path="/profile"
           element={isAuthenticated() ? <Profile /> : <Navigate to="/profile" />}
         />
@@ -133,7 +133,7 @@ function App() {
           element={
             isAuthenticated() ? <Seeker /> : <Navigate to="/talent" />
           }
-        /> */}
+        />
       </Routes>
     </div>
   );
