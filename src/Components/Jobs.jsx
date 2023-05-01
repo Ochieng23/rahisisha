@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './job.css';
-import Navigation from './Navigation';
+import Navbar from "../Components/Main Page/Navbar";
 
 const Jobs = () => {
   const [job, setJob] = useState([]);
@@ -32,8 +32,8 @@ const Jobs = () => {
 
   return (
     <>
-      <Navigation />
-      <section className="jobs__lists-page">
+      <Navbar />
+      <section className="jobs__lists-page" style={{marginTop:"50px"}}>
         <div className="job__lists-container">
           {job.map((job) => (
             <article className="job__card-list" key={job.id}>

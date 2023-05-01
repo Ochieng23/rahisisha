@@ -129,8 +129,10 @@ function App() {
         />
 
         <Route
-          path="/seekerlist"
-          element={isAuthenticated() ? <Seeker /> : <Navigate to="/seekerlist" />}
+          path="/talent"
+          element={
+            isAuthenticated() ? <Seeker /> : <Navigate to="/talent" />
+          }
         />
       </Routes>
     </div>

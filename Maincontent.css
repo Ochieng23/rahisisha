@@ -1,0 +1,328 @@
+.Main_content{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-top: 80px;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+
+    /* height: 100vh;
+    min-height: 100vh;
+    background-color: rgb(240,239,235); */
+}
+
+.wrapper{
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.left_content{
+    position: sticky;
+    top: 70px;
+    flex: 0.2;
+}
+
+.left_first{
+    /* height: 440px; */
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(255,255,255);
+    border-radius: 10px;
+}
+
+.left_second{
+    margin-top: 10px;
+    height: 430px;
+    border: 1px solid rgb(255,255,255);
+    border-radius: 10px;
+    background-color: rgb(255,255,255);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.left_second >h5{
+    font-weight: 500;
+}
+.left_second >p{
+    color:rgb(112, 112, 112);
+   font-size: 12px;
+   font-weight: 500;
+   display: flex;
+   align-items: center;
+   padding: 5px;
+}
+
+.left_second >p > a{
+    text-decoration: none;
+    color:rgb(112, 112, 112);
+}
+.left_second >p > a:hover{
+    text-decoration: underline;
+    color: rgb(18,80,181);
+}
+
+.left_content > .groups{
+    color: rgb(18,80,181);
+}
+
+
+.left_second >p .MuiSvgIcon-root{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.left_second >.line{
+ padding-top: 10px;
+ text-align: center; 
+ color:rgb(112, 112, 112);
+
+}
+
+.left_second >.line:hover{
+    background-color: lightgray;
+    height: 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+.left_second>.hr{
+    margin-top: 10px;
+}
+
+.center_content{
+    border: 1px solid rgb(255,255,255);
+    flex: 0.5;
+    height: 120px;
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+}
+
+.post_container{
+    border: 1px solid rgb(255,255,255);
+    flex: 0.5;
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+    margin-top: 30px;
+    padding: 12px;
+}
+
+.left_division >img{
+    width:60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.right_division >h3{
+    font-size: 15px;
+    font-family:  -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+.right_division >p{
+font-size: 13px;
+color:rgb(112, 112, 112);
+margin-top: -8px;
+}
+
+.post_header{
+    display: flex;
+}
+.post_text>p{
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.post_img > img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.reactions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.left_reaction{
+    display: flex;
+    align-items: center;
+}
+
+.left_reaction > p{
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 14px;
+    color:rgb(112, 112, 112);
+    font-weight: 300;
+}
+.right_reaction >p{
+    font-size: 14px;
+    color:rgb(112, 112, 112);
+    font-weight: 300;
+}
+
+.head_content > img{
+    width:50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.head_content > form{
+    border: 1px solid rgb(109, 109, 109);
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.head_content > form > input{
+    width: 400px;
+    height:40px;
+    border: none;
+    padding-left: 10px;
+}
+.head_content > form > input:focus{
+    border:none;
+    outline: none;
+
+}
+
+.head_content > form >button{
+    height: 40px;
+    display: none;
+}
+
+.head_content{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    /* justify-content: space-between ; */
+}
+
+
+.right_content{
+    flex: 0.25;
+
+    
+}
+
+.right_first{
+    border: 2px solid rgb(255,255,255);
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+}
+
+.right_second{
+    height: 200px;
+}
+
+.backgroundImage{
+    height: 80px;
+    border-radius: 10px 10px 0px 0px;
+    border:1px solid rgb(240,239,235);
+}
+.backgroundImage >img{
+    width: 80px;
+    border-radius: 50%;
+    border:1px solid #fff;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+}
+
+.profile_name{
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+/* .reactions_{
+    color:rgb(101,101,101);
+    margin-bottom:15px ;
+    padding: 4px;
+
+} */
+
+/* .reactions_>h5:hover{
+    background-color: rgb(232, 232, 232);
+    cursor: pointer;
+} */
+
+
+.premium{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.premium:hover{
+    background-color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+.premium > .premium_note{
+ color:rgb(101,101,101);
+ font-size: 12px;
+ font-weight:200;
+}
+.premium > .premium_link{
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.premium > .premium_link > a{
+ color:rgb(101,101,101);
+ text-decoration: none;
+}
+
+
+
+.wishlist:hover{
+    background-color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+
+.wishlist > p .MuiSvgIcon-root{
+    color:rgb(81, 81, 81);
+    border-radius: 10px;
+} 
+
+.right_content>img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.footer_details{
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    /* border: 2px solid red; */
+}
+
+.footer_details >ul>li{
+    text-align: center;
+    padding: 5px;
+}
+.footer_details >ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+.footer_details >ul>li>a{
+    text-decoration: none;
+    color: rgb(111, 111, 111);
+    font-size: 12px;
+}
+.footer_details >ul>li>a:hover{
+    color: rgb(1, 81, 137);
+    text-decoration: underline;
+}
+
+.footer_details >p >img{
+    width: 90px;
+}
+.footer_details >p{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+}

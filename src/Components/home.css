@@ -180,14 +180,15 @@
    border-radius: 1rem;
  }
  .posts__lists-card {
-   border: 0.3rem solid var(--color-black);
-   width: var(--container-width-lg);
-   border-radius: 1rem;
- }
+  border: 0.01rem solid var(--color-black);
+  width: var(--container-width-lg);
+  border-radius: 1rem;
+}
+
  .card__profile-avatar {
    width: 4rem;
    aspect-ratio: 1/1;
-   border: 0.3rem solid var(--color-black);
+   border: 0.1rem solid var(--color-black);
    border-radius: 50%;
    overflow: hidden;
  }
@@ -304,9 +305,11 @@
   }
   .homepage__posts {
     width: var(--container-width-df);
+  
   }
   .home__page-posts {
     width: 44rem;
+    
     /* margin-left: 0.5rem; */
   }
   .posts__lists {

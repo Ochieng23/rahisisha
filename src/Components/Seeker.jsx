@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./seeker.css";
 import Navigation from "./Navigation";
+import Navbar from "../Components/Main Page/Navbar";
 
 const Seeker = () => {
   const [seeker, setSeeker] = useState([]);
@@ -35,8 +36,8 @@ const Seeker = () => {
 
   return (
     <>
-      <Navigation />
-      <section className="seekers__lists-page">
+      <Navbar />
+      <section className="seekers__lists-page" style={{marginTop:"50px"}}>
         <div className="seeker__lists-container">
           {seeker.map((seek) => (
             <article key={seek.id} className="community__card-list">

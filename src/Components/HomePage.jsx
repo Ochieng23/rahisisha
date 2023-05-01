@@ -23,6 +23,9 @@ import Navigation from "./Navigation";
 import Post from "./Post";
 import axios from "axios";
 import SeekersList from "./SeekersList";
+import CreatePost from "./Main Page/CreatePost";
+import Navbar from "../Components/Main Page/Navbar";
+import Comments from "./Comments";
 
 const customStyles = {
   content: {
@@ -45,8 +48,11 @@ function HomePage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
-
+  const [role, setRole] = useState(null);
   const [user, setUser] = useState([]);
+  const [formx, setForm] = useState(false);
+  const [liked, setLiked] = useState(false);
+  const [likecount, setLikesCount] = useState(false);
 
   // fetching posts
   useEffect(() => {
@@ -94,13 +100,6 @@ function HomePage() {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const openModal2 = () => {
-    setIsOpen2(true);
-  };
-
-  const closeModal2 = () => {
-    setIsOpen2(false);
-  };
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
@@ -116,24 +115,33 @@ function HomePage() {
 
     const postCode = posts.post_code;
 
-    axios
-      .patch(
-        `http://127.0.0.1:3000/posts/${postCode}`,
-        {
-          likes: 1, // Increment likes by 1
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
-      .then((response) => {
-        console.log("Post liked successfully:", response.data);
-      })
-      .catch((error) => {
-        console.error("Failed to like post:", error);
-      });
+    if (liked) {
+      // Remove the like from the post
+      axios
+        .patch(`http://127.0.0.1:3000/posts/${postCode}`, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        })
+        .then((response) => {
+          setLiked(false);
+          setLikesCount((prevCount) => prevCount - 1);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      // Add a like to the post
+      axios
+        .post(
+          `http://127.0.0.1:3000/posts/${postCode}`,
+          {},
+          {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          }
+        )
+        .then((response) => {
+          setLiked(true);
+          setLikesCount((prevCount) => prevCount + 1);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   console.log(posts);
@@ -183,7 +191,7 @@ function HomePage() {
         const user_code = decodedToken.user_ref;
 
         console.log(user_code);
-
+        setRole(decodedToken.role);
         fetch(`http://127.0.0.1:3000/users/${user_code}`, {
           method: "GET",
           headers: {
@@ -216,17 +224,29 @@ function HomePage() {
 
   return (
     <>
-      <Navigation />
-      <section className="home__page">
+      <div>
+        <Navbar />
+      </div>
+      <section className="home__page" style={{ marginTop: "70px" }}>
         <div className="home__page-container">
           <aside className="home__page-profile">
-            <article className="home__profile-info">
+            <article
+              className="home__profile-info"
+              style={{ position: "fixed" }}
+            >
               <div className="home__profile-top">
                 <div className="home__profile-bg"></div>
                 <div className="home__profile-image">
                   <Link to="/profile">
-                    {user && user.seeker && user.seeker.avatar && (
-                      <img src={user.seeker.avatar} alt="" />
+                    {user && (
+                      <img
+                        src={
+                          role === "seeker"
+                            ? user?.seeker?.avatar
+                            : user?.employer?.avatar
+                        }
+                        alt=""
+                      />
                     )}
                   </Link>
                 </div>
@@ -296,77 +316,101 @@ function HomePage() {
               </div>
             </article>
           </aside>
-          <div className="homepage__posts">
-            <div className="home__page-posts">
-              <div className="home__create-post">
-                <div className="create__posts">
-                  <div className="create__posts-avatar">
-                    <img
-                      src="https://images.pexels.com/photos/16161517/pexels-photo-16161517.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
-                      alt=""
-                    />
-                  </div>
-                  <div className="create__posts-input">
-                    <form action="" className="form">
-                      <input type="Create a post" />
-                      <button type="submit">Post</button>
-                    </form>
-                  </div>
-                </div>
-                <div className="create__post-types">
-                  <div className="posts__icon-video">
-                    <BsPlayCircle />
-                    <Popup
-                      trigger={<small>Videos</small>}
-                      position="center"
-                      className="my-popup"
-                    >
-                      <div className="popup_body">
-                        <div className="popup_body-header">
-                          <h5>Video Posts</h5>
-                        </div>
-                        <div className="popup_form">
-                          <form action="" className="popup_form">
-                            <div className="popup_form-input">
-                              <input type="text" placeholder="Title" />
-                              <input
-                                type="text"
-                                placeholder="Write a description"
-                              />
-                              <input type="file" name="" id="" />
-                            </div>
-                            <div className="form__group-button">
-                              <button className="form__group-save">Save</button>
-                            </div>
-                          </form>
-                        </div>
+          <div className="homepage__posts ">
+            <div
+              className="home__page-posts"
+              style={{ border: "2px solid red" }}
+            >
+              <div className="">
+                <div className="create__posts" style={{ display: "none" }}>
+                  <div className="flex flex-col space-y-4 rounded-lg shadow-lg bg-white p-4">
+                    <div className="flex space-x-4">
+                      <img
+                        className="w-12 h-12 rounded-full object-cover"
+                        src="https://source.unsplash.com/random"
+                        alt="Profile"
+                      />
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg">John Doe</h3>
+                        <p className="text-gray-500 text-sm">
+                          Software Engineer at Example Company
+                        </p>
                       </div>
-                    </Popup>
+                    </div>
+                    <div className="flex flex-col space-y-2">
+                      <label htmlFor="post-title" className="font-bold text-lg">
+                        Title
+                      </label>
+                      <input
+                        id="post-title"
+                        className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        type="text"
+                        placeholder="Enter your title"
+                      />
+                    </div>
+                    <div className="flex flex-col space-y-2">
+                      <label htmlFor="post-body" className="font-bold text-lg">
+                        Body
+                      </label>
+                      <textarea
+                        id="post-body"
+                        className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Write your post"
+                      ></textarea>
+                    </div>
+                    <div className="flex space-x-4">
+                      <div className="flex-1">
+                        <label
+                          htmlFor="post-image"
+                          className="font-bold text-lg"
+                        >
+                          Image
+                        </label>
+                        <input
+                          id="post-image"
+                          className="w-full py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          type="file"
+                        />
+                      </div>
+                      <button
+                        className="flex-none px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        type="button"
+                      >
+                        Post
+                      </button>
+                    </div>
                   </div>
-                  <div className="posts__icon-photo">
-                    <TbPhotoCheck />
-                    <small>Photos</small>
-                  </div>
-                  <div className="posts__icon-date">
-                    <BiCalendar />
-                    <small>Events</small>
-                  </div>
+
+                  {/* <div className="create__posts-avatar">
+                    {user && (
+                      <img
+                        src={
+                          role === "seeker"
+                            ? user?.seeker?.avatar
+                            : user?.employer?.avatar
+                        }
+                        alt=""
+                      />
+                    )}
+                  </div> */}
                 </div>
+                <div className="create__post-types"></div>
               </div>
             </div>
-            <div className="posts__lists">
+            <div className="bg-white shadow-md rounded-md overflow-hidden">
               {Array.isArray(posts) &&
                 posts.map((post) => (
                   <article
                     className="posts__lists-card"
                     style={{
+                      height: "auto",
                       width: "100%",
-                      marginTop: "6px",
+                      marginTop: "10px",
                     }}
                     key={post.id}
                   >
                     <div
-                      className="posts__card-profile"
+                      className="posts__card-profile "
                       style={{ padding: "2px", height: "auto" }}
                     >
                       <div className="card__profile-avatar">
@@ -381,71 +425,83 @@ function HomePage() {
 
                         <Post />
                       </div>
-                      <div className="card__profile-about">
-                        <h5>{post.title}</h5>
+
+                      <div className="card__profile-about ">
+                        <h5 className="text-xl font-semibold">{post.title}</h5>
                         <small>Nairobi, Kenya</small>
                       </div>
                     </div>
-                    <div className="profile__card-posts">
+                    <div className="profile__card-posts ">
                       <div className="posts__card-content col-md-6">
-                        <small style={{ marginBottom: "3px" }}>
+                        <small class="block text-gray-500 mb-5">
                           {post.description}
                         </small>
                       </div>
+
                       <div className="posts__card-image col-md-6">
                         <img
-                          className="img-fluid"
+                          className="mx-auto w-full "
                           src={post.media}
                           alt=""
                           style={{
-                            display: "block",
-                            height: "520px",
-                            width: "100%",
                             objectFit: "cover",
-                            objectPosition: "50% 60%",
+                            objectPosition: "50% 50%",
+                            height: "auto",
                           }}
                         />
                       </div>
 
                       <div className="posts__card-buttons">
-                        <div className="buttons__like-card">
-                          <button onClick={handleLike} className="like">
-                            <SlLike />
-                          </button>
-                          <h5>{post.likes}</h5>
+                        <div
+                          className="buttons__like-card"
+                          style={{ marginBottom: "5px" }}
+                        >
+                          <Comments postCode={post.post_code}/>
                         </div>
                         <div className="buttons__comment-card">
-                          <button className="comment">
-
-                            
-          
-
-                          <FaRegCommentAlt onClick={openModal2}/>
+                          <button
+                            style={{
+                              width: "100px",
+                              height: "30px",
+                              padding: "2px",
+                              border: "2px solid black",
+                            }}
+                            className="btn btn-dark text-dark mt-2 mx-3 my-1"
+                          >
+                            <h3 onClick={openModal2}>view</h3>
                             <Modal
-                                  isOpen={modalIsOpen2}
-                                  onRequestClose={closeModal2}
-                                  style={customStyles}
-                                >
-                                  <div className="modal__header">
-                                    <strong ref={(_subtitle) => (subtitle = _subtitle)}>Comments</strong>
-                                  </div>
-                                  <div
-                                    className="modal__body"
-                                    style={{ overflow: "scroll", textAlign: "center" }}
-                                  >
-                                    {Array.isArray(posts) &&
-                                      posts.map((post) => (
-                                        <article className="modal2__card">
-                                          {post.comments &&
-                                            post.comments.map((comment) => (
-                                              <p key={comment.id}>{comment.content}</p>
-                                            ))}
-                                        </article>
-                                      ))}
-                                  </div>
-                                </Modal>
+                              isOpen={modalIsOpen2}
+                              onRequestClose={closeModal2}
+                              style={customStyles}
+                            >
+                              <div className="modal__header">
+                                <strong
+                                  ref={(_subtitle) => (subtitle = _subtitle)}
+                                ></strong>
+                              </div>
+                              <div
+                                className="modal__body"
+                                style={{
+                                  overflow: "scroll",
+                                  textAlign: "center",
+                                }}
+                              >
+                                
+                                  
+                                    <article className="modal2__card">
+                                    {post.comments.map((comment) => (
+  <div key={comment.comment_code}>
+    <p>{comment.content}</p>
+    {/* check if the user object exists before accessing its 'username' property */}
+    {comment.user && <p>Comment by: {comment.user.username}</p>}
+  </div>
+))}
+
+                                    </article>
+                                  
+                              </div>
+                            </Modal>
                           </button>
-                          <h5>Comment</h5>
                         </div>
                       </div>
                     </div>
@@ -460,16 +516,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-// const [isExpired, setIsExpired] = useState(false)
-
-//   function decodeToken(token) {
-//     console.log(token)
-//     if (token === null || token === "undefined") {
-//       console.log("refresh token can not be decoded, no session found")
-//       navigate("/")
-//     } else {
-//       console.log("valid token, trying to determine expiry time...")
-//       const decodedRefreshToken = jwt_decode(token)
-//       const expired = dayjs.unix(decodedRefreshToken.exp).diff(dayjs()) < 1;
-//       return setIsExpired(expired)

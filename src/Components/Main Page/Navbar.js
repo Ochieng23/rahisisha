@@ -7,6 +7,7 @@ import TextsmsIcon from "@mui/icons-material/Textsms";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
 import AppsIcon from "@mui/icons-material/Apps";
+import { Link } from "react-router-dom";
 
 function Navbar({ showUp, setshowUp }) {
   // show messages
@@ -15,44 +16,32 @@ function Navbar({ showUp, setshowUp }) {
   };
 
   return (
-    <div className="Navbar fixed top-0 left-0 right-0 z-30 h-[60px]">
+    <div className="Navbar fixed top-0 left-0 right-0 z-30 h-[60px]" style={{backgroundColor:"black"}}>
       <div className="logo_section">
-        <img
-          className="cursor-pointer"
-          src="https://www.seekpng.com/png/full/8-84419_linkedin-logo-png-icon-linkedin-logo-png.png"
-          alt="logo"
-        />
+        <span style={{color:"white", fontWeight:"bolder"}}>Rahisisha</span>
 
         {/* <SearchIcon className = 'spair_search'/> */}
-        <div className="search_bar">
-          <SearchIcon className="search_icon" />
-          <input placeholder="search"></input>
-        </div>
+       
       </div>
       <div className="nav_section">
         <ul>
           <li className="active">
-            <HomeIcon />
-            <span className="nav_text">Home</span>{" "}
+            <HomeIcon  style={{color:"white"}}/>
+            <Link to="/home" style={{color:"white"}} className="nav_text">Home</Link>{" "}
+          </li>
+          
+          <li>
+            <WorkIcon style={{color:"white"}} />
+            <Link to="/profile" style={{color:"white"}} className="nav_text">Profile</Link>
+          </li>
+         
+          <li>
+            <NotificationsIcon style={{color:"white"}} />
+            <Link to="/jobs" style={{color:"white"}} className="nav_text">Jobs</Link>
           </li>
           <li>
-            <GroupIcon />
-            <span className="nav_text">My Network</span>
-          </li>
-          <li>
-            <WorkIcon />
-            <span className="nav_text">Jobs</span>
-          </li>
-          <li onClick={() => showMessages()}>
-            <TextsmsIcon />
-            <span className="notification bg-red-500 text-white pl-1 pr-1 rounded-full -mt-[20px] ml-[16px]">
-              4
-            </span>
-            <span className="nav_text">Messaging</span>
-          </li>
-          <li>
-            <NotificationsIcon />
-            <span className="nav_text">Notification</span>
+            <GroupIcon style={{color:"white"}}/>
+            <Link  to="/community"   style={{color:"white"}} className="nav_text">Community</Link>
           </li>
           <li>
             {" "}
@@ -60,11 +49,13 @@ function Navbar({ showUp, setshowUp }) {
               src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
               alt="profile"
             />
-            <span className="nav_text"> Me</span>
+            <Link to="/home" style={{color:"white"}} className="nav_text"> Me</Link>
           </li>
           <li className="line"></li>
-          <li className="work">
-            <AppsIcon /> Work
+          <li style={{color:"white"}} className="work">
+            <AppsIcon style={{color:"white"}}/> 
+            <Link to="/talent" >Talent</Link>
+
           </li>
         </ul>
       </div>

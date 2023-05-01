@@ -14,7 +14,7 @@ import { BiUser } from 'react-icons/bi'
 import { BsTelephone } from 'react-icons/bs'
 import Modal from 'react-modal'
 import { Link } from 'react-router-dom'
-import Navigation from './Navigation'
+import Navbar from "../Components/Main Page/Navbar";
 
 const customStyles = {
     content: {
@@ -49,7 +49,7 @@ function Community() {
 
   return (
     <>
-    <Navigation/>
+    <Navbar/>
         <section className="community__page">
         <div className="landing__page-container" style={{ marginTop: "1px" }}>
          <div className="landing__page-image">

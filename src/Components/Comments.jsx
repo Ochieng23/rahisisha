@@ -48,7 +48,7 @@ function Comments({ postCode}) {
         <>
           <textarea
             className="mt-1 rounded"
-            placeholder="Comment"
+            placeholder="lets talk..."
             type="text"
             name="content"
             value={updatedData.content}
@@ -60,7 +60,7 @@ function Comments({ postCode}) {
             className="mt-1"
             onClick={handleSaveClick}
           >
-            Save
+            post
           </button>
         </>
       ) : (
@@ -69,7 +69,7 @@ function Comments({ postCode}) {
           className="btn btn-dark text-dark mt-2 mx-3"
           onClick={handleEditClick}
         >
-          Comment
+          Connect
         </button>
       )}
     </div>
