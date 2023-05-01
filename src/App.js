@@ -20,7 +20,7 @@ import Seeker from "./Components/Seeker";
 
 // new UI
 import Landing from "./Components/Main Page/Landing";
-import Login from './Components/LoginPage/Login'
+// import Login from './Components/LoginPage/Login'
 import Maincontent from './Components/Main Page/Maincontent'
 
 function App() {

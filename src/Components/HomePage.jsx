@@ -101,6 +101,14 @@ function HomePage() {
     setIsOpen(false);
   };
 
+  const openModal2 = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal2 = () => {
+    setIsOpen(false);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userRole");
